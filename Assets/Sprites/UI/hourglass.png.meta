@@ -509,7 +509,23 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hourglass_0: 3824146322478515066
+      hourglass_1: -6679113309944364962
+      hourglass_10: 2867235837284558519
+      hourglass_11: 5630810555610541504
+      hourglass_12: -4599792769584631685
+      hourglass_13: 1107498604408801687
+      hourglass_14: 5153641031084707359
+      hourglass_15: 8509031904579101844
+      hourglass_2: -7497707875014672796
+      hourglass_3: -3518216353424402537
+      hourglass_4: -2863532471342243099
+      hourglass_5: -4868614740244732846
+      hourglass_6: -2675327186078643437
+      hourglass_7: -4910967559647293830
+      hourglass_8: 9215737616220388361
+      hourglass_9: 6840700244581900517
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

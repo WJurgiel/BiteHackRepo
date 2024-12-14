@@ -5,6 +5,5 @@ public class NewMonoBehaviourScript : ScriptableObject
     public int speed;
     public int damage;
     public float lifeTime;
-    
-    
+
 }

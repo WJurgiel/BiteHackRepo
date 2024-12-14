@@ -7,13 +7,17 @@ using UnityEngine.UI;
 public class ButtonFunctions : MonoBehaviour
 {
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void ContinueGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Aneta");
     }
     public void NewGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Aneta");
     }
     public void ShowSettings()
     {

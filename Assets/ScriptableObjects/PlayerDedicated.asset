@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a6c729c75ca05489915034e38b9ae2, type: 3}
+  m_Name: PlayerDedicated
+  m_EditorClassIdentifier: 
+  dashSpeed: 0
+  experience: 0
+  expToNextLevel: 0
+  level: 1
+  equippedGunID: 0
+  expScaleFactor: 1.2

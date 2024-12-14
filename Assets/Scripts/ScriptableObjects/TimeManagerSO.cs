@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "TimeManager", menuName = "ScriptableObjects/TimeManagerSO")]
 public class TimeManagerSO : ScriptableObject
@@ -13,9 +14,12 @@ public class TimeManagerSO : ScriptableObject
     
     public float bulletTimeAmount ;
     public float maxBulletTimeAmount;
-    public bool bulletTimeOn = false;
+    public bool isbulletTimeOn = false;
+
+    public float bulletTimePitch = 0.8f;
     [NonSerialized] public UnityEvent e_EnterBulletTime = new UnityEvent();
     [NonSerialized] public UnityEvent e_ExitBulletTime = new UnityEvent();
+    //Be careful with this one, it's invoked everytime in Coroutine 
     [NonSerialized] public UnityEvent e_UpdateBulletTime = new UnityEvent();
 
     private MonoBehaviour coroutineRunner;
@@ -27,7 +31,7 @@ public class TimeManagerSO : ScriptableObject
     private void OnEnable()
     {
         if(maxBulletTimeAmount == 0) Debug.Log("[TimeManagerSO] Max bullet time amount is 0");
-        bulletTimeOn = false; 
+        isbulletTimeOn = false; 
         
         bulletTimeAmount = maxBulletTimeAmount;
         Time.timeScale = normalTimeScale;
@@ -36,9 +40,9 @@ public class TimeManagerSO : ScriptableObject
 
     public void EnterBulletTime()
     {
-        if (bulletTimeOn || bulletTimeAmount <= 0) return; // Sprawdź, czy można aktywować bullet-time
+        if (isbulletTimeOn || bulletTimeAmount <= 0) return; // Sprawdź, czy można aktywować bullet-time
 
-        bulletTimeOn = true;
+        isbulletTimeOn = true;
         Time.timeScale = bulletTimeScale; // Włącz slow-motion
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
         e_EnterBulletTime.Invoke(); // Wywołaj event
@@ -56,7 +60,7 @@ public class TimeManagerSO : ScriptableObject
 
     private IEnumerator DrainBulletTime()
     {
-        while (bulletTimeOn && bulletTimeAmount > 0)
+        while (isbulletTimeOn && bulletTimeAmount > 0)
         {
             bulletTimeAmount -= Time.unscaledDeltaTime * regainBulletTimeScale; // Zmniejsz czas niezależnie od Time.timeScale
             e_UpdateBulletTime.Invoke();
@@ -69,7 +73,7 @@ public class TimeManagerSO : ScriptableObject
 
     private IEnumerator RegainBulletTime()
     {
-        while (!bulletTimeOn && bulletTimeAmount < maxBulletTimeAmount)
+        while (!isbulletTimeOn && bulletTimeAmount < maxBulletTimeAmount)
         {
             bulletTimeAmount += Time.unscaledDeltaTime * regainBulletTimeScale;
             e_UpdateBulletTime.Invoke(); // I think it's bad, but maybe it isn't? Who knows
@@ -80,9 +84,9 @@ public class TimeManagerSO : ScriptableObject
     }
     public void ExitBulletTime()
     {
-        if (!bulletTimeOn) return;
+        if (!isbulletTimeOn) return;
         
-        bulletTimeOn = false;
+        isbulletTimeOn = false;
         
         Time.timeScale = normalTimeScale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;

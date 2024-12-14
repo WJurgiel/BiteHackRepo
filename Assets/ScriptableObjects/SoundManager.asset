@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: SoundManager
   m_EditorClassIdentifier: 
   SoundObject: {fileID: 8198607150615647523, guid: 84dda1b8b62bd20429ff96a1b2dbc631, type: 3}
+  timeManager: {fileID: 11400000, guid: 6c9bfd21c4a448d43a038c6b5457ad7c, type: 2}
+  bulletTimePitch: 0.2
+  normalPitch: 1

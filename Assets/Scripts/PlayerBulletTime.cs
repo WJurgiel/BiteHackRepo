@@ -18,11 +18,11 @@ public class PlayerBulletTime : MonoBehaviour
     }
     void _testing_bulletTime()
     {
-        if (Input.GetMouseButtonDown(1) && !timeManager.bulletTimeOn)
+        if (Input.GetMouseButtonDown(1) && !timeManager.isbulletTimeOn)
         {
             timeManager.EnterBulletTime();
         }
-        else if (Input.GetMouseButtonDown(1) && timeManager.bulletTimeOn)
+        else if (Input.GetMouseButtonDown(1) && timeManager.isbulletTimeOn)
         {
             timeManager.ExitBulletTime();
         }

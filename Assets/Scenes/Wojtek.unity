@@ -543,7 +543,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4942be3669dfc444c8f6794c33111c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootSFX: {fileID: 8300000, guid: 08192e5253d35534eb3305328e019956, type: 3}
+  shootSFX: {fileID: 8300000, guid: 08192e5253d35534eb3305328e019956, type: 3}
+  soundManagerSO: {fileID: 11400000, guid: 38b797d1e2c632246b7e23abf9afe931, type: 2}
+--- !u!1 &1555589878 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 595377833133845914, guid: b70ad1069f5d02d4cb07783f08402fd4, type: 3}
+  m_PrefabInstance: {fileID: 3838742410517659662}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1555589881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555589878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b996d289b2f6b34dbf78c91c119c94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusics:
+  - {fileID: 8300000, guid: 5e5f5e4546c12794889c996f48bb7ae8, type: 3}
+  timeManagerSO: {fileID: 11400000, guid: 6c9bfd21c4a448d43a038c6b5457ad7c, type: 2}
 --- !u!1001 &3838742410517659662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -596,10 +617,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackgroundMusic
       objectReference: {fileID: 0}
+    - target: {fileID: 6722818450164756620, guid: b70ad1069f5d02d4cb07783f08402fd4, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722818450164756620, guid: b70ad1069f5d02d4cb07783f08402fd4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6722818450164756620, guid: b70ad1069f5d02d4cb07783f08402fd4, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 595377833133845914, guid: b70ad1069f5d02d4cb07783f08402fd4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1555589881}
   m_SourcePrefab: {fileID: 100100000, guid: b70ad1069f5d02d4cb07783f08402fd4, type: 3}
 --- !u!1001 &4087426732441293050
 PrefabInstance:

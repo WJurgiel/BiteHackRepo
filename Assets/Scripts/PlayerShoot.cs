@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    public AudioClip _shootSFX;
+    public AudioClip shootSFX;
+    [SerializeField] SoundManagerSO soundManagerSO;
     void Start()
     {
         
@@ -13,8 +14,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Debug.Log("shootin");
-            SoundManagerSO.PlaySoundFXClip(_shootSFX, transform.position, 1f);
+            soundManagerSO.PlaySoundFXClip(shootSFX, transform.position, 1f);
         }
     }
 }

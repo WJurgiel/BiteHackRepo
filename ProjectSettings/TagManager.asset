@@ -47,8 +47,5 @@ TagManager:
   - name: UI button
     uniqueID: 3732921885
     locked: 0
-  - name: UI text
-    uniqueID: 2516768783
-    locked: 0
   m_RenderingLayers:
   - Default

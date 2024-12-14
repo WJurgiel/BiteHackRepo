@@ -22,8 +22,12 @@ public class Player : MonoBehaviour
             Debug.Log("Private health: " + _health + " SO health = " + stats.health) ;
         }
         _testing_EventTests();
+        
     }
-
+    
+    /// <summary>
+    /// R - Heal, T: - +speed, Y: +def U: + dmg  Z: + exp
+    /// </summary>
     void _testing_EventTests()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -47,4 +51,6 @@ public class Player : MonoBehaviour
             playerStats.GetXP(20);
         }
     }
+
+  
 }

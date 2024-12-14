@@ -25,6 +25,8 @@ public class StatisticsUI : MonoBehaviour
         DefenseTMPUpdate();
 
         playerGeneralStats.e_healhYourselfEvent.AddListener(HealthTMPUpdate);
+        playerGeneralStats.e_getDamageEvent.AddListener(HealthTMPUpdate);
+        
         playerGeneralStats.e_increaseDamageEvent.AddListener(DamageTMPUpdate);
         playerGeneralStats.e_increaseSpeedEvent.AddListener(SpeedTMPUpdate);
         playerGeneralStats.e_increaseDefenseEvent.AddListener(DefenseTMPUpdate);

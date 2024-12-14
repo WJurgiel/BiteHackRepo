@@ -42,5 +42,9 @@ public class Player : MonoBehaviour
         {
             stats.IncreaseDamage(2);
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            playerStats.GetXP(20);
+        }
     }
 }

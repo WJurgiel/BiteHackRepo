@@ -19,7 +19,7 @@ public class StatsSO : ScriptableObject
     [System.NonSerialized] public UnityEvent<int> e_increaseDamageEvent = new UnityEvent<int>();
     private void OnEnable()
     {
-        health = maxHealth;
+        HealYourselfFull();
     }
     
     public void GetDamage(int damage)

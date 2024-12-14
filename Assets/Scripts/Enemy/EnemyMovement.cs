@@ -19,16 +19,19 @@ public class EnemyMovement : MonoBehaviour
     private float KBCounter = 0;
     [SerializeField]
     private float KBTotalTime = 0.5f;
+
     
 
     void Awake()
     {
         knockbackEmitter = GetComponent<EnemyAttack>();
         knockbackEmitter.knockbackEvent.AddListener(EnemyHit);
+        knockbackEmitter.knockbackFromWallEvent.AddListener(EnemyHitWall);
     }
 
     void Start()
     {
+
         rb=GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -82,4 +85,10 @@ public class EnemyMovement : MonoBehaviour
     {
         KBCounter = KBTotalTime;
     }
+    public void EnemyHitWall()
+    {
+        KBCounter = 0.1f;
+    }
+    
+
 }

@@ -6,27 +6,21 @@ public class EnemyAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     public UnityEvent knockbackEvent;
+    public UnityEvent knockbackFromWallEvent;
     [SerializeField] private float hitRange = 0.1f;
+    public LayerMask mapLayer; 
     void Start()
     {
+        mapLayer = UnityEngine.LayerMask.GetMask("Map");
         rb=GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         CheckCollision();
+        CheckMapCollision();
     }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            knockbackEvent.Invoke();
-           Debug.Log(collision.gameObject.name);
-        }
-        
-        
-    }
+    
     private void CheckCollision()
     {
         bool hitCheck = false;
@@ -41,6 +35,16 @@ public class EnemyAttack : MonoBehaviour
         {
             knockbackEvent.Invoke();
         }
+    }
+    private void CheckMapCollision()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange, mapLayer);
+        if (hits.Length > 0)
+        {
+            knockbackFromWallEvent.Invoke();
+        }
+
+        
     }
 
 }

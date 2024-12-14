@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float vertical;
     private Rigidbody2D rb;
+    
 
     void Start()
     {

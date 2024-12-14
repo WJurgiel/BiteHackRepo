@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7506247386098945089}
+  - component: {fileID: 3152914201955055523}
   m_Layer: 0
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8492247501905676611}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3152914201955055523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2585806131117866901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0a7458d0a8a86e4e8ad95159e6f2994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5624455144510844022
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,9 +55,11 @@ GameObject:
   - component: {fileID: 8492247501905676611}
   - component: {fileID: 5897700868611132832}
   - component: {fileID: 8097458692493492190}
+  - component: {fileID: 474372946686555418}
   - component: {fileID: 1129828339050000858}
-  - component: {fileID: 4493167420928332635}
-  - component: {fileID: 3135519351460774677}
+  - component: {fileID: 9119695232314437010}
+  - component: {fileID: 7145629591798911855}
+  - component: {fileID: 1288770322653448240}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,6 +165,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &474372946686555418
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624455144510844022}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1.3125}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &1129828339050000858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +240,8 @@ MonoBehaviour:
   mapLayer:
     serializedVersion: 2
     m_Bits: 0
---- !u!61 &474372946686555418
-BoxCollider2D:
+--- !u!114 &7145629591798911855
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -188,7 +249,24 @@ BoxCollider2D:
   m_GameObject: {fileID: 5624455144510844022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cee6517ef88766459bb6d8e6a9eb4ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 4942be3669dfc444c8f6794c33111c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeManager: {fileID: 11400000, guid: 6c9bfd21c4a448d43a038c6b5457ad7c, type: 2}
+  shootSFX: {fileID: 8300000, guid: 08192e5253d35534eb3305328e019956, type: 3}
+  soundManagerSO: {fileID: 11400000, guid: 38b797d1e2c632246b7e23abf9afe931, type: 2}
+  bulletPrefab: {fileID: 8344835280206501934, guid: 4a1742503e09ec14c9895f5def9e7eee, type: 3}
+  bulletSpawn: {fileID: 7506247386098945089}
+--- !u!114 &1288770322653448240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5624455144510844022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e955b65bb871ebe4db51915b17393440, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
+  playerStats: {fileID: 11400000, guid: 55414fe8615152c409657583d9a139e8, type: 2}

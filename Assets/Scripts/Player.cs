@@ -34,13 +34,13 @@ public class Player : MonoBehaviour
         {
             stats.IncreaseSpeed(2);
         }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            stats.IncreaseDefense(2);
+        }
         if (Input.GetKeyDown(KeyCode.U))
         {
             stats.IncreaseDamage(2);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            stats.IncreaseDefense(2);
         }
     }
 }

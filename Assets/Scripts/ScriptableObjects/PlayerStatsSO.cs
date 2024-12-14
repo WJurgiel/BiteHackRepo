@@ -9,5 +9,4 @@ public class PlayerStatsSO : ScriptableObject
     public int level;
     public int equippedGunID;
     
- 
 }

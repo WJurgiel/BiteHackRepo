@@ -14,9 +14,9 @@ public class PlayerBulletTime : MonoBehaviour
 
     void Update()
     {
-        _testing_bulletTime();
+        SwitchBulletTime();
     }
-    void _testing_bulletTime()
+    void SwitchBulletTime()
     {
         if (Input.GetMouseButtonDown(1) && !timeManager.isbulletTimeOn)
         {

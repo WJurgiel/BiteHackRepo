@@ -33,6 +33,7 @@ public class EnemyAttack : MonoBehaviour
 
         if (hitCheck)
         {
+            Debug.Log("Hit");
             knockbackEvent.Invoke();
         }
     }

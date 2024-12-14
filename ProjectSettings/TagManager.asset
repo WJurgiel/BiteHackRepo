@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 3
   tags:
   - SFXPlayer
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Map
   - Water
   - UI
   - 
@@ -42,35 +43,3 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: LowerGround
-    uniqueID: 3306670255
-    locked: 0
-  - name: ShadowLowerGround
-    uniqueID: 1370322903
-    locked: 0
-  - name: DecoLowerGround
-    uniqueID: 2859340639
-    locked: 0
-  - name: Ground
-    uniqueID: 1153190087
-    locked: 0
-  - name: WalkInFront
-    uniqueID: 963899701
-    locked: 0
-  - name: Collision
-    uniqueID: 2720076115
-    locked: 0
-  - name: Player
-    uniqueID: 1676442985
-    locked: 0
-  - name: WalkBehind
-    uniqueID: 2872262423
-    locked: 0
-  - name: Deco
-    uniqueID: 302365235
-    locked: 0
-  m_RenderingLayers:
-  - Default
-  - 
-  - 
-  - 

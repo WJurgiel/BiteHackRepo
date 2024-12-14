@@ -42,8 +42,6 @@ GameObject:
   - component: {fileID: 8492247501905676611}
   - component: {fileID: 5897700868611132832}
   - component: {fileID: 8097458692493492190}
-  - component: {fileID: 4794943404662399779}
-  - component: {fileID: 4525887894733480135}
   - component: {fileID: 1129828339050000858}
   - component: {fileID: 4493167420928332635}
   - component: {fileID: 3135519351460774677}
@@ -152,33 +150,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4794943404662399779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5624455144510844022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e955b65bb871ebe4db51915b17393440, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
-  playerStats: {fileID: 11400000, guid: 55414fe8615152c409657583d9a139e8, type: 2}
---- !u!114 &4525887894733480135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5624455144510844022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782c4c0698473c44a8427e2e54bd11f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
 --- !u!114 &1129828339050000858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeManager: {fileID: 11400000, guid: 6c9bfd21c4a448d43a038c6b5457ad7c, type: 2}
---- !u!114 &4493167420928332635
+--- !u!114 &9119695232314437010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,32 +172,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 5624455144510844022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4942be3669dfc444c8f6794c33111c13, type: 3}
+  m_Script: {fileID: 11500000, guid: 782c4c0698473c44a8427e2e54bd11f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSFX: {fileID: 8300000, guid: 08192e5253d35534eb3305328e019956, type: 3}
-  soundManagerSO: {fileID: 11400000, guid: 38b797d1e2c632246b7e23abf9afe931, type: 2}
-  bulletPrefab: {fileID: 8344835280206501934, guid: 4a1742503e09ec14c9895f5def9e7eee, type: 3}
-  bulletSpawn: {fileID: 7506247386098945089}
---- !u!95 &3135519351460774677
-Animator:
-  serializedVersion: 7
+  stats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
+  mapLayer:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!61 &474372946686555418
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5624455144510844022}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e0a896fff85012841a1762983b835195, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cee6517ef88766459bb6d8e6a9eb4ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeManager: {fileID: 11400000, guid: 6c9bfd21c4a448d43a038c6b5457ad7c, type: 2}

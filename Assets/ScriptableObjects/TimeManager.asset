@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24379ff313f9364587a88b99c52d227, type: 3}
-  m_Name: PlayerGeneral
+  m_Script: {fileID: 11500000, guid: a8f3110d78619c54e8399cdf1e13d42f, type: 3}
+  m_Name: TimeManager
   m_EditorClassIdentifier: 
-  health: 36
-  maxHealth: 50
-  speed: 5
-  defense: 96
-  damage: 54
+  bulletTimeScale: 0.2
+  normalTimeScale: 1
+  bulletTimeAmount: -0.0058273505
+  maxBulletTimeAmount: 5
+  bulletTimeOn: 0

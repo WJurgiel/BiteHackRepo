@@ -23,5 +23,6 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 m_Input = new Vector3(horizontal, vertical, 0);
         rb.MovePosition(transform.position + m_Input * (stats.speed * Time.fixedDeltaTime));
+        
     }
 }

@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckMapCollision()
     {
-        bool hitMap = false;
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange, mapLayer);
         if (hits.Length > 0)
         {

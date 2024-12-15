@@ -75,6 +75,6 @@ public class StatisticsUI : MonoBehaviour
 
     private void BonesPickedTMPUpdate()
     {
-        BonesPickedTMP.text = $"{playerStatsSO.bonesPicked}/{playerStatsSO}";
+        // BonesPickedTMP.text = $"{playerStatsSO.bonesPicked}/{playerStatsSO}";
     }
 }

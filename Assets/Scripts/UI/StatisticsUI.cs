@@ -45,7 +45,6 @@ public class StatisticsUI : MonoBehaviour
 
     private void HealthUpdate(int health=-1)
     {
-        Debug.Log("Shit is working");
         HealthImg.fillAmount = (float)(playerGeneralStats.health) / playerGeneralStats.maxHealth;
     }
 
@@ -75,6 +74,6 @@ public class StatisticsUI : MonoBehaviour
 
     private void BonesPickedTMPUpdate()
     {
-        BonesPickedTMP.text = $"{playerStatsSO.bonesPicked}/{playerStatsSO}";
+        // BonesPickedTMP.text = $"{playerStatsSO.bonesPicked}/{playerStatsSO}";
     }
 }

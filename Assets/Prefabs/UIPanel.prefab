@@ -999,7 +999,7 @@ MonoBehaviour:
   HealthImg: {fileID: 634855666603314114}
   BulletTimeImg: {fileID: 2942400473102074764}
   CurrentAmmoTMP: {fileID: 2696540365973788919}
-  BonesPickedTMP: {fileID: 0}
+  BonesPickedTMP: {fileID: 1458703528249497840}
 --- !u!1 &4761095569893429672
 GameObject:
   m_ObjectHideFlags: 0

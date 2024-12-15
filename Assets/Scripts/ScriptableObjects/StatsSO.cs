@@ -26,9 +26,9 @@ public class StatsSO : ScriptableObject
     
     public void GetDamage(int damage)
     {
-        Debug.Log("event eventuje");
         health -= damage;
         CheckIfDead();
+        Debug.Log(health);
         e_getDamageEvent.Invoke(health);
     }
 

@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92a6c729c75ca05489915034e38b9ae2, type: 3}
   m_Name: PlayerDedicated
   m_EditorClassIdentifier: 
+  bonesPicked: 0
+  bonesToBePicked: 5
   dashSpeed: 0
   experience: 0
-  expToNextLevel: 0
+  expToNextLevel: 120.00001
   level: 1
   equippedGunID: 0
   expScaleFactor: 1.2

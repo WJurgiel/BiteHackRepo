@@ -32,10 +32,12 @@ public class EnemyAttack : MonoBehaviour
     {
         bool hitCheck = false;
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
+        Debug.DrawRay(transform.position, Vector3.down * hitRange, Color.red);
         foreach (var hit in hits)
         {
-            if (hit.gameObject.tag == "Player"){}
+            if (hit.gameObject.tag == "Player")
                 hitCheck = true;
+
         }
 
         if (hitCheck)

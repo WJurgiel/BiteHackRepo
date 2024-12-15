@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 6511520800955737495}
   - component: {fileID: 3302914709621311325}
   - component: {fileID: 3246502554642248694}
+  - component: {fileID: 7381579063757484}
+  - component: {fileID: 7506496586052904487}
+  - component: {fileID: 3137443673897126634}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -220,6 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
   bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0
 --- !u!95 &3246502554642248694
 Animator:
   serializedVersion: 7
@@ -242,3 +246,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7381579063757484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0
+--- !u!114 &7506496586052904487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0
+--- !u!114 &3137443673897126634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0

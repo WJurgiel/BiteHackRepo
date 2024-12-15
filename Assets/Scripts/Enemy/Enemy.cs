@@ -6,30 +6,31 @@ public class Enemy : MonoBehaviour
     private EnemyMovement enemyMovement;
     [SerializeField] private BulletSO bulletSO;
     [SerializeField] private GameObject bloodParticles;
+    [SerializeField] private float health;
     void Start()
     {
         enemyMovement = GetComponent<EnemyMovement>();
-        enemyMovement.stats.e_SetDead.AddListener(Die);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        health = enemyMovement.stats.maxHealth;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
-        {
-            enemyMovement.stats.GetDamage(Random.Range(bulletSO.damage - 5, bulletSO.damage+5));
+        {   
+            health -= bulletSO.damage;
+            Debug.Log($"Diddy health: {health}");
             Destroy(collision.gameObject);
+            CheckDie();
         }
     }
 
-    private void Die()
+    private void CheckDie()
     {
-        Instantiate(bloodParticles, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        if (health <= 0)
+        {
+            Instantiate(bloodParticles, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+     
     }
 }

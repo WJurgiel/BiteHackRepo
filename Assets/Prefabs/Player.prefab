@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 9119695232314437010}
   - component: {fileID: 7145629591798911855}
   - component: {fileID: 1288770322653448240}
-  - component: {fileID: 6721182756628298660}
+  - component: {fileID: 6212996224430729491}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
   playerStats: {fileID: 11400000, guid: 55414fe8615152c409657583d9a139e8, type: 2}
---- !u!95 &6721182756628298660
+--- !u!95 &6212996224430729491
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

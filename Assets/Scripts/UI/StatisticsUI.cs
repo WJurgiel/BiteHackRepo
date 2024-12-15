@@ -22,6 +22,10 @@ public class StatisticsUI : MonoBehaviour
     }
     void Start()
     {
+        bones.boneCurrent = 0;
+        playerGeneralStats.health = playerGeneralStats.maxHealth;
+        timeManager.bulletTimeAmount = timeManager.maxBulletTimeAmount;
+        gun.ammoCurrent = gun.maxAmmo;
         HealthUpdate();
         BulletTimeUpdate();
         AmmoTMPUpdate();

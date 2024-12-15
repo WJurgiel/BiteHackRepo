@@ -18,8 +18,6 @@ public class BackgroundMusic : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
-        DontDestroyOnLoad(gameObject);
     }
 
     void Start()

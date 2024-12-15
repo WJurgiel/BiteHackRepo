@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BulletSO
   m_EditorClassIdentifier: 
   speed: 30
-  damage: 5
+  damage: 15
   range: 5

@@ -9,6 +9,7 @@ TagManager:
   - Bone
   - GuardTrigger
   - Guard
+  - Bullet
   layers:
   - Default
   - TransparentFX

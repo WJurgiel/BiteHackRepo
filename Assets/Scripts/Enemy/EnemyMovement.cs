@@ -4,6 +4,7 @@ using UnityEngine.Events;
 
 public class EnemyMovement : MonoBehaviour
 {
+    public StatsSO stats;
     GameObject player;
     private EnemyAttack knockbackEmitter;
     private Rigidbody2D rb;
@@ -27,6 +28,8 @@ public class EnemyMovement : MonoBehaviour
         knockbackEmitter = GetComponent<EnemyAttack>();
         knockbackEmitter.knockbackEvent.AddListener(EnemyHit);
         knockbackEmitter.knockbackFromWallEvent.AddListener(EnemyHitWall);
+        
+        
     }
 
     void Start()
@@ -47,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
             {
                 direction = returnDirection();
                 Rotate(direction);
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, stats.speed * Time.deltaTime);
             }
             else
             {
@@ -70,7 +73,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Vector2 returnDirection()
     {
-        return player.transform.position - transform.position;;
+        return player.transform.position - transform.position;
     }
 
     private void CheckIfCanChase()

@@ -36,26 +36,7 @@ public class Player : MonoBehaviour
     /// </summary>
     void _testing_EventTests()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            stats.HealYourself(20);
-        }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            stats.IncreaseSpeed(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            stats.IncreaseDefense(2);
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            stats.IncreaseDamage(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            playerStats.GetXP(20);
-        }
+       
     }
 
   

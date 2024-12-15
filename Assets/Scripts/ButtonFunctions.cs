@@ -13,11 +13,11 @@ public class ButtonFunctions : MonoBehaviour
     }
     public void ContinueGame()
     {
-        SceneManager.LoadScene("Aneta");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void NewGame()
     {
-        SceneManager.LoadScene("Aneta");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void ShowSettings()
     {

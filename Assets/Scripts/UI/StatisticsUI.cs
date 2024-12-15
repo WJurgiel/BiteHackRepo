@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StatisticsUI : MonoBehaviour
 {
     [SerializeField] private StatsSO playerGeneralStats;
+    [SerializeField] private PlayerStatsSO playerStatsSO;
     [SerializeField] private TimeManagerSO timeManager;
     [SerializeField] private GunSO gun;
 
@@ -14,6 +15,7 @@ public class StatisticsUI : MonoBehaviour
     [SerializeField] private Image BulletTimeImg;
     // private Image
     [SerializeField] private TMP_Text CurrentAmmoTMP;
+    [SerializeField] private TMP_Text BonesPickedTMP;
     void Awake()
     {
         
@@ -21,11 +23,9 @@ public class StatisticsUI : MonoBehaviour
     void Start()
     {
         HealthUpdate();
-        DamageTMPUpdate();
-        SpeedTMPUpdate();
-        DefenseTMPUpdate();
         BulletTimeUpdate();
         AmmoTMPUpdate();
+        BonesPickedTMPUpdate();
         
         playerGeneralStats.e_healhYourselfEvent.AddListener(HealthUpdate);
         playerGeneralStats.e_getDamageEvent.AddListener(HealthUpdate);
@@ -37,6 +37,8 @@ public class StatisticsUI : MonoBehaviour
         timeManager.e_UpdateBulletTime.AddListener(BulletTimeUpdate);
         gun.e_Shoot.AddListener(AmmoTMPUpdate);
         gun.e_Reload.AddListener(AmmoTMPUpdate);
+        
+        
         // Debug.Log(healthTMP.text);
     }
 
@@ -69,5 +71,10 @@ public class StatisticsUI : MonoBehaviour
         if (gun.ammoCurrent < 5) CurrentAmmoTMP.color = Color.red;
         else CurrentAmmoTMP.color = Color.white;
         CurrentAmmoTMP.text = $"{gun.ammoCurrent}";
+    }
+
+    private void BonesPickedTMPUpdate()
+    {
+        BonesPickedTMP.text = $"{playerStatsSO.bonesPicked}/{playerStatsSO}";
     }
 }

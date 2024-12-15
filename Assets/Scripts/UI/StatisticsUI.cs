@@ -1,67 +1,73 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class StatisticsUI : MonoBehaviour
 {
     [SerializeField] private StatsSO playerGeneralStats;
     [SerializeField] private TimeManagerSO timeManager;
-    private TMP_Text healthTMP;
-    private TMP_Text damageTMP;
-    private TMP_Text speedTMP;
-    private TMP_Text defenseTMP;
-    private TMP_Text bulletTimeTMP;
+    [SerializeField] private GunSO gun;
 
+    [SerializeField] private Image HealthImg;
+
+    [SerializeField] private Image BulletTimeImg;
+    // private Image
+    [SerializeField] private TMP_Text CurrentAmmoTMP;
     void Awake()
     {
-        healthTMP = transform.GetChild(0).GetComponent<TMP_Text>();
-        speedTMP = transform.GetChild(1).GetComponentInChildren<TMP_Text>();
-        defenseTMP = transform.GetChild(2).GetComponentInChildren<TMP_Text>();
-        damageTMP = transform.GetChild(3).GetComponentInChildren<TMP_Text>();
-        bulletTimeTMP = transform.GetChild(4).GetComponentInChildren<TMP_Text>();
+        
     }
     void Start()
     {
-        HealthTMPUpdate();
+        HealthUpdate();
         DamageTMPUpdate();
         SpeedTMPUpdate();
         DefenseTMPUpdate();
-        BulletTimeTMPUpdate();
+        BulletTimeUpdate();
+        AmmoTMPUpdate();
         
-        playerGeneralStats.e_healhYourselfEvent.AddListener(HealthTMPUpdate);
-        playerGeneralStats.e_getDamageEvent.AddListener(HealthTMPUpdate);
+        playerGeneralStats.e_healhYourselfEvent.AddListener(HealthUpdate);
+        playerGeneralStats.e_getDamageEvent.AddListener(HealthUpdate);
         
         playerGeneralStats.e_increaseDamageEvent.AddListener(DamageTMPUpdate);
         playerGeneralStats.e_increaseSpeedEvent.AddListener(SpeedTMPUpdate);
         playerGeneralStats.e_increaseDefenseEvent.AddListener(DefenseTMPUpdate);
         
-        timeManager.e_UpdateBulletTime.AddListener(BulletTimeTMPUpdate);
-        Debug.Log(healthTMP.text);
+        timeManager.e_UpdateBulletTime.AddListener(BulletTimeUpdate);
+        gun.e_Shoot.AddListener(AmmoTMPUpdate);
+        gun.e_Reload.AddListener(AmmoTMPUpdate);
+        // Debug.Log(healthTMP.text);
     }
 
 
-    private void HealthTMPUpdate(int health=-1)
+    private void HealthUpdate(int health=-1)
     {
-        healthTMP.text = playerGeneralStats.health.ToString();
+        Debug.Log("Shit is working");
+        HealthImg.fillAmount = (float)(playerGeneralStats.health) / playerGeneralStats.maxHealth;
     }
 
     private void DamageTMPUpdate(int amount=-1)
     {
-        damageTMP.text = playerGeneralStats.damage.ToString();
     }
 
     private void SpeedTMPUpdate(int amount=-1)
     {
-        speedTMP.text = playerGeneralStats.speed.ToString();
     }
 
     private void DefenseTMPUpdate(int amount=-1)
     {
-        defenseTMP.text = playerGeneralStats.defense.ToString();
     }
 
-    private void BulletTimeTMPUpdate()
+    private void BulletTimeUpdate()
     {
-        bulletTimeTMP.text = $"{timeManager.bulletTimeAmount:F2}/{timeManager.maxBulletTimeAmount:F2}";
+        BulletTimeImg.fillAmount = timeManager.bulletTimeAmount / timeManager.maxBulletTimeAmount;
+    }
+
+    private void AmmoTMPUpdate()
+    {
+        if (gun.ammoCurrent < 5) CurrentAmmoTMP.color = Color.red;
+        else CurrentAmmoTMP.color = Color.white;
+        CurrentAmmoTMP.text = $"{gun.ammoCurrent}";
     }
 }

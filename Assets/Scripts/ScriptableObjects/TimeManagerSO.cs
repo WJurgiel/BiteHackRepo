@@ -79,7 +79,7 @@ public class TimeManagerSO : ScriptableObject
             e_UpdateBulletTime.Invoke(); // I think it's bad, but maybe it isn't? Who knows
             yield return null;
         }
-        bulletTimeAmount = maxBulletTimeAmount;
+        // bulletTimeAmount = maxBulletTimeAmount;
         e_UpdateBulletTime.Invoke();
     }
     public void ExitBulletTime()

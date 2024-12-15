@@ -22,6 +22,10 @@ public class StatisticsUI : MonoBehaviour
     }
     void Start()
     {
+        bones.boneCurrent = 0;
+        playerGeneralStats.health = playerGeneralStats.maxHealth;
+        timeManager.bulletTimeAmount = timeManager.maxBulletTimeAmount;
+        gun.ammoCurrent = gun.maxAmmo;
         HealthUpdate();
         BulletTimeUpdate();
         AmmoTMPUpdate();
@@ -39,6 +43,7 @@ public class StatisticsUI : MonoBehaviour
         gun.e_Reload.AddListener(AmmoTMPUpdate);
         
         bones.e_Pickup.AddListener(BonesPickedTMPUpdate);
+        bones.e_Reset.AddListener((BonesPickedTMPUpdate));
         
         // Debug.Log(healthTMP.text);
     }

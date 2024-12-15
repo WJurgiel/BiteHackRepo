@@ -18,12 +18,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // if (Input.GetMouseButtonDown(0))
-        // {
-        //     stats.GetDamage(Random.Range(0, 10));
-        //     Debug.Log("Private health: " + _health + " SO health = " + stats.health) ;
-        // }
-        // _testing_EventTests();
+       
         
     }
 
@@ -31,13 +26,7 @@ public class Player : MonoBehaviour
     {
        SceneManager.LoadScene("DeathScene"); 
     }
-    /// <summary>
-    /// R - Heal, T: - +speed, Y: +def U: + dmg  Z: + exp
-    /// </summary>
-    void _testing_EventTests()
-    {
-       
-    }
+   
 
   
 }

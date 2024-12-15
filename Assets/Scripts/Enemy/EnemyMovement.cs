@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float KBTotalTime = 0.5f;
 
-    
+    private SpriteRenderer spriteRenderer;
 
     void Awake()
     {
@@ -37,6 +37,7 @@ public class EnemyMovement : MonoBehaviour
 
         rb=GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -61,6 +62,16 @@ public class EnemyMovement : MonoBehaviour
         {
             CheckIfCanChase();
         }
+        
+        if (returnDirection().x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else
+        {
+            spriteRenderer.flipX = true;
+        }
+    
     }
     
 

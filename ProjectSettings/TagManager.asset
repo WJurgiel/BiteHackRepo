@@ -10,6 +10,7 @@ TagManager:
   - GuardTrigger
   - Guard
   - Bullet
+  - EndGame
   layers:
   - Default
   - TransparentFX

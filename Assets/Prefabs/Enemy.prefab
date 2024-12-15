@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 6511520800955737495}
   - component: {fileID: 3302914709621311325}
   - component: {fileID: 3246502554642248694}
+  - component: {fileID: 7381579063757484}
+  - component: {fileID: 7506496586052904487}
+  - component: {fileID: 3137443673897126634}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -79,8 +82,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1103162229
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 914916491, guid: df6d876231e571a42aefe9eb730b937e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -180,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: bd4aecbc2a9afb14b86c7ea01539532c, type: 2}
   speed: 3
+  startChaseDistance: 6
   KBForce: 1.5
   KBTotalTime: 0.1
 --- !u!114 &6511520800955737495
@@ -204,7 +208,7 @@ MonoBehaviour:
   hitRange: 0.05
   mapLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   damageCooldown: 1
 --- !u!114 &3302914709621311325
 MonoBehaviour:
@@ -220,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
   bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0
 --- !u!95 &3246502554642248694
 Animator:
   serializedVersion: 7
@@ -242,3 +247,48 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7381579063757484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0
+--- !u!114 &7506496586052904487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0
+--- !u!114 &3137443673897126634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+  health: 0

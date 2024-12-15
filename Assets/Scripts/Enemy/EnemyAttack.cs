@@ -32,17 +32,18 @@ public class EnemyAttack : MonoBehaviour
     {
         bool hitCheck = false;
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
+        Debug.DrawRay(transform.position, Vector3.down * hitRange, Color.red);
         foreach (var hit in hits)
         {
-            if (hit.gameObject.tag == "Player"){}
+            if (hit.gameObject.tag == "Player")
                 hitCheck = true;
+
         }
 
         if (hitCheck)
         {
             if (Time.time >= lastDamageTime + damageCooldown)
             {
-                Debug.Log("Hit");
                 playerStats.GetDamage(Random.Range(enemyMovement.stats.damage - 5, enemyMovement.stats.damage + 5));
                 knockbackEvent.Invoke();
                 lastDamageTime = Time.time; // Zaktualizuj czas ostatniego zadania obrażeń

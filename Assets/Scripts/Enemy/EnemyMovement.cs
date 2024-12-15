@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     
     [SerializeField] private float speed = 5f;
     private float distance;
-    private float startChaseDistance = 3f;
+    [SerializeField] private float startChaseDistance = 6f;
     private bool chaseFlag = false;
     private Vector2 direction;
     
@@ -49,12 +49,10 @@ public class EnemyMovement : MonoBehaviour
             if (KBCounter <= 0)
             {
                 direction = returnDirection();
-                Rotate(direction);
                 transform.position = Vector2.MoveTowards(transform.position, player.transform.position, stats.speed * Time.deltaTime);
             }
             else
             {
-                Rotate(returnDirection());
                 transform.position = Vector2.MoveTowards(transform.position,  transform.position + (transform.position - player.transform.position).normalized, KBForce * Time.deltaTime);
                 KBCounter -= Time.deltaTime;
             }
@@ -64,12 +62,7 @@ public class EnemyMovement : MonoBehaviour
             CheckIfCanChase();
         }
     }
-
-    private void Rotate(Vector2 direction)
-    {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-    }
+    
 
     private Vector2 returnDirection()
     {

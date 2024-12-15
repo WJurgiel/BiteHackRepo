@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Bones
   m_EditorClassIdentifier: 
   boneCurrent: 2
-  boneMax: 3
+  boneMax: 20

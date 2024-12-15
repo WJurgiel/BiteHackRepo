@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     
     [SerializeField] private float speed = 5f;
     private float distance;
-    private float startChaseDistance = 3f;
+    [SerializeField] private float startChaseDistance = 6f;
     private bool chaseFlag = false;
     private Vector2 direction;
     

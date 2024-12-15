@@ -82,8 +82,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1103162229
+  m_SortingLayer: 9
   m_SortingOrder: 0
   m_Sprite: {fileID: 914916491, guid: df6d876231e571a42aefe9eb730b937e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -183,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: bd4aecbc2a9afb14b86c7ea01539532c, type: 2}
   speed: 3
+  startChaseDistance: 6
   KBForce: 1.5
   KBTotalTime: 0.1
 --- !u!114 &6511520800955737495
@@ -207,7 +208,7 @@ MonoBehaviour:
   hitRange: 0.05
   mapLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   damageCooldown: 1
 --- !u!114 &3302914709621311325
 MonoBehaviour:

@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private StatsSO stats;
     [SerializeField] private BoneSO bones;
+    private SpriteRenderer spriteRenderer;
     private float horizontal;
     private float vertical;
     private Rigidbody2D rb;
@@ -23,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
         mapLayer = UnityEngine.LayerMask.GetMask("Map");
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -31,7 +34,14 @@ public class PlayerMovement : MonoBehaviour
         vertical = Input.GetAxis("Vertical");
 
         isMoving = Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f;
-
+        if (horizontal < 0 && spriteRenderer.flipX == false)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (horizontal > 0 && spriteRenderer.flipX == true)
+        {
+            spriteRenderer.flipX = false;
+        }
         UpdateMovementAnimation();
 
         if (Input.GetButtonDown("Fire1")) {
@@ -50,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         CheckMapCollision();
     }
 
+    
     void FixedUpdate()
     {
         if (!isShooting && moveFlag)

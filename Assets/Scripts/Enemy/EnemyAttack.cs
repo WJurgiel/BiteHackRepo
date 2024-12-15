@@ -44,7 +44,6 @@ public class EnemyAttack : MonoBehaviour
         {
             if (Time.time >= lastDamageTime + damageCooldown)
             {
-                Debug.Log("Hit");
                 playerStats.GetDamage(Random.Range(enemyMovement.stats.damage - 5, enemyMovement.stats.damage + 5));
                 knockbackEvent.Invoke();
                 lastDamageTime = Time.time; // Zaktualizuj czas ostatniego zadania obrażeń

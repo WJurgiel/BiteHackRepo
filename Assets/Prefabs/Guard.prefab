@@ -256,7 +256,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Bring me 10 bones.'
+  m_text: ' Bring me 20 bones.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c06f44c9e72c46bb9c9ea4430a572, type: 2}
   m_sharedMaterial: {fileID: 4489412165124204862, guid: cd7c06f44c9e72c46bb9c9ea4430a572, type: 2}
@@ -513,7 +513,7 @@ SpriteRenderer:
   m_SortingLayerID: -1103162229
   m_SortingLayer: 9
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6014667263653241675, guid: 3b8475b7125b6404895c56f8c53af6a3, type: 3}
+  m_Sprite: {fileID: 4234399794683613960, guid: 4eaaeed0dc14b21479bb82ab9eb9e5b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

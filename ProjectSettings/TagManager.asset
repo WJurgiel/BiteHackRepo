@@ -6,6 +6,9 @@ TagManager:
   tags:
   - SFXPlayer
   - Enemy
+  - Bone
+  - GuardTrigger
+  - Guard
   layers:
   - Default
   - TransparentFX

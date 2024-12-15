@@ -110,15 +110,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Bone")
         {
-            bones.boneCurrent++;
+            bones.AddBone();
             Destroy(other.gameObject);
-            Debug.Log(bones.boneCurrent);
         }
         else if (other.gameObject.tag == "GuardTrigger")
         {
             CanvasGroup guardCanvas = other.gameObject.GetComponentInChildren<CanvasGroup>();
             
-            if (bones.boneCurrent == bones.boneMax)
+            if (bones.boneCurrent >= bones.boneMax)
             {
                 GameObject panel = guardCanvas.gameObject.GetComponentInChildren<Image>().gameObject;
                 TextMeshProUGUI text = panel.GetComponentInChildren<TextMeshProUGUI>();

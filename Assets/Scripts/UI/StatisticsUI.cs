@@ -9,7 +9,7 @@ public class StatisticsUI : MonoBehaviour
     [SerializeField] private PlayerStatsSO playerStatsSO;
     [SerializeField] private TimeManagerSO timeManager;
     [SerializeField] private GunSO gun;
-
+    [SerializeField] private BoneSO bones;
     [SerializeField] private Image HealthImg;
 
     [SerializeField] private Image BulletTimeImg;
@@ -38,6 +38,7 @@ public class StatisticsUI : MonoBehaviour
         gun.e_Shoot.AddListener(AmmoTMPUpdate);
         gun.e_Reload.AddListener(AmmoTMPUpdate);
         
+        bones.e_Pickup.AddListener(BonesPickedTMPUpdate);
         
         // Debug.Log(healthTMP.text);
     }
@@ -74,6 +75,6 @@ public class StatisticsUI : MonoBehaviour
 
     private void BonesPickedTMPUpdate()
     {
-        // BonesPickedTMP.text = $"{playerStatsSO.bonesPicked}/{playerStatsSO}";
+        BonesPickedTMP.text = $"{bones.boneCurrent}/{bones.boneMax}";
     }
 }

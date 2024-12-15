@@ -39,6 +39,7 @@ public class StatisticsUI : MonoBehaviour
         gun.e_Reload.AddListener(AmmoTMPUpdate);
         
         bones.e_Pickup.AddListener(BonesPickedTMPUpdate);
+        bones.e_Reset.AddListener((BonesPickedTMPUpdate));
         
         // Debug.Log(healthTMP.text);
     }

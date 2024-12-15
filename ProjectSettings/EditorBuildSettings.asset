@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: af6dd78cd002f164cbf92bcc59c7e557
   - enabled: 1
-    path: Assets/Scenes/Martyna Tilemap.unity
+    path: Assets/Scenes/Level_1.unity
     guid: e2ab6121384355647881a0d1194a6503
+  - enabled: 1
+    path: Assets/Scenes/EndGame.unity
+    guid: 88305dd2c6f1c814d8328e57fdbc9731
   - enabled: 1
     path: Assets/Scenes/DeathScene.unity
     guid: eee9afff21d800d4a8c341383e9d6ba2

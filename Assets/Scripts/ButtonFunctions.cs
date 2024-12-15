@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ButtonFunctions : MonoBehaviour
 {
-
+    [SerializeField] private BoneSO bone;
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainMenu");
@@ -14,10 +14,12 @@ public class ButtonFunctions : MonoBehaviour
     public void ContinueGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        bone.boneCurrent = 0;
     }
     public void NewGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        bone.boneCurrent = 0;
     }
     public void ShowSettings()
     {

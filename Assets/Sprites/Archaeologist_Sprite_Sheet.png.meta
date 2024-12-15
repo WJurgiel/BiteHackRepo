@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45945028a6e2b57479ab660ae328351b
+guid: 4c100f3421feba64f821a01754b220c5
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -44,99 +44,6 @@ TextureImporter:
   - first:
       213: 6160051217413576496
     second: Archaeologist_Sprite_Sheet_13
-  - first:
-      213: 5248990156025949704
-    second: Archaeologist_Sprite_Sheet_14
-  - first:
-      213: 5769170268725494274
-    second: Archaeologist_Sprite_Sheet_15
-  - first:
-      213: 160792228586036016
-    second: Archaeologist_Sprite_Sheet_16
-  - first:
-      213: -5250934857715941918
-    second: Archaeologist_Sprite_Sheet_17
-  - first:
-      213: 5639742721082283254
-    second: Archaeologist_Sprite_Sheet_18
-  - first:
-      213: -143769757133218440
-    second: Archaeologist_Sprite_Sheet_19
-  - first:
-      213: -6197651435572024758
-    second: Archaeologist_Sprite_Sheet_20
-  - first:
-      213: 4822935646625222289
-    second: Archaeologist_Sprite_Sheet_21
-  - first:
-      213: -4489534651015916988
-    second: Archaeologist_Sprite_Sheet_22
-  - first:
-      213: -9040210507693654057
-    second: Archaeologist_Sprite_Sheet_23
-  - first:
-      213: -3029437403133564623
-    second: Archaeologist_Sprite_Sheet_24
-  - first:
-      213: -7023957622799140062
-    second: Archaeologist_Sprite_Sheet_25
-  - first:
-      213: 3763357563450805991
-    second: Archaeologist_Sprite_Sheet_26
-  - first:
-      213: -4119346592452915800
-    second: Archaeologist_Sprite_Sheet_27
-  - first:
-      213: -6625303122468877779
-    second: Archaeologist_Sprite_Sheet_28
-  - first:
-      213: -638137230575682585
-    second: Archaeologist_Sprite_Sheet_29
-  - first:
-      213: -997539827144884593
-    second: Archaeologist_Sprite_Sheet_30
-  - first:
-      213: 2818531987913492072
-    second: Archaeologist_Sprite_Sheet_31
-  - first:
-      213: -3515393835014280576
-    second: Archaeologist_Sprite_Sheet_32
-  - first:
-      213: 7461627259795644141
-    second: Archaeologist_Sprite_Sheet_33
-  - first:
-      213: 4052141817087902180
-    second: Archaeologist_Sprite_Sheet_34
-  - first:
-      213: -4739717238842429873
-    second: Archaeologist_Sprite_Sheet_35
-  - first:
-      213: -7822474538574193320
-    second: Archaeologist_Sprite_Sheet_36
-  - first:
-      213: 5039702553563429068
-    second: Archaeologist_Sprite_Sheet_37
-  - first:
-      213: 6591041025834274626
-    second: Archaeologist_Sprite_Sheet_38
-  - first:
-      213: -4212320074001476424
-    second: Archaeologist_Sprite_Sheet_39
-  - first:
-      213: -6086590888047339319
-    second: Archaeologist_Sprite_Sheet_40
-  - first:
-      213: -3549491850996559995
-    second: Archaeologist_Sprite_Sheet_41
-  - first:
-      213: -5140162447388802048
-    second: Archaeologist_Sprite_Sheet_42
-  - first:
-      213: -283805805417886788
-    second: Archaeologist_Sprite_Sheet_43
-  - first:
-      213: 5488215925448238564
-    second: Archaeologist_Sprite_Sheet_44
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -236,18 +143,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 4
-        y: 36
+        y: 60
         width: 16
-        height: 21
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5641d2f20aa1dc544a03d7d2d8250546
+      spriteID: e3af9a84a959b77b0800000000000000
       internalID: -5225418452756727234
       vertices: []
       indices: 
@@ -258,7 +165,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 26
-        y: 36
+        y: 60
         width: 15
         height: 21
       alignment: 0
@@ -267,9 +174,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 26269023629bb9e41b730abb8e1c6148
+      spriteID: 4d1852385f3378760800000000000000
       internalID: 7459988437322793428
       vertices: []
       indices: 
@@ -280,18 +187,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 47
-        y: 36
+        y: 60
         width: 14
-        height: 21
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 665e66646bc1e0c469d8a8315c631bc7
+      spriteID: 96a6c15caf2a5ac80800000000000000
       internalID: -8312058339309884823
       vertices: []
       indices: 
@@ -302,18 +209,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 70
-        y: 36
+        y: 60
         width: 14
-        height: 21
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 11a649d4a47f1244ca8683ff91ff357d
+      spriteID: cd6ae0ca159b156c0800000000000000
       internalID: -4156337220656126244
       vertices: []
       indices: 
@@ -324,18 +231,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 90
-        y: 36
+        y: 60
         width: 14
-        height: 21
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0bb7562a95df1ad46a79f92f535c784d
+      spriteID: a5e57445a3aa10590800000000000000
       internalID: -7709693919582790054
       vertices: []
       indices: 
@@ -346,18 +253,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 6
-        y: 9
+        y: 33
         width: 18
-        height: 21
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6b167e419ead89e4690357f908e299a8
+      spriteID: 1a824bf6466439730800000000000000
       internalID: 4004621890847254689
       vertices: []
       indices: 
@@ -368,7 +275,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 29
-        y: 9
+        y: 33
         width: 22
         height: 21
       alignment: 0
@@ -377,9 +284,9 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5a4fdb726fccac844851371f6482c89a
+      spriteID: 54436a06160a3a670800000000000000
       internalID: 8548852857773110341
       vertices: []
       indices: 
@@ -390,18 +297,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 56
-        y: 8
+        y: 32
         width: 20
-        height: 21
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f107b054f7a961d46a4b46fc2603b10b
+      spriteID: 390d04e47de6c99d0800000000000000
       internalID: -2766214200102432621
       vertices: []
       indices: 
@@ -412,19 +319,129 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 84
-        y: 8
+        y: 32
         width: 22
-        height: 21
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fcb1f52fe61061843b7bf8603145ed73
+      spriteID: a76fed00554ad1230800000000000000
       internalID: 3611223161214793338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archaeologist_Sprite_Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 8
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c54090ba0e7bff70800000000000000
+      internalID: 9222103246348240326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archaeologist_Sprite_Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 7
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfdcafcab8bf47630800000000000000
+      internalID: 3924037752667688445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archaeologist_Sprite_Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 7
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3044c8ec50b385230800000000000000
+      internalID: 3627714395973108739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archaeologist_Sprite_Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 6
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a53b1956c95ccceb0800000000000000
+      internalID: -4698163035744652454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Archaeologist_Sprite_Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 6
+        width: 16
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0371624e1f5ec7550800000000000000
+      internalID: 6160051217413576496
       vertices: []
       indices: 
       edges: []
@@ -433,7 +450,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ddcbae02512269f489e514f52dfbd3ca
+    spriteID: c1de01d79d9385e4fb8f95d5c6c02331
     internalID: 0
     vertices: []
     indices: 
@@ -445,6 +462,10 @@ TextureImporter:
     nameFileIdTable:
       Archaeologist_Sprite_Sheet_0: -5225418452756727234
       Archaeologist_Sprite_Sheet_1: 7459988437322793428
+      Archaeologist_Sprite_Sheet_10: 3924037752667688445
+      Archaeologist_Sprite_Sheet_11: 3627714395973108739
+      Archaeologist_Sprite_Sheet_12: -4698163035744652454
+      Archaeologist_Sprite_Sheet_13: 6160051217413576496
       Archaeologist_Sprite_Sheet_2: -8312058339309884823
       Archaeologist_Sprite_Sheet_3: -4156337220656126244
       Archaeologist_Sprite_Sheet_4: -7709693919582790054
@@ -452,6 +473,7 @@ TextureImporter:
       Archaeologist_Sprite_Sheet_6: 8548852857773110341
       Archaeologist_Sprite_Sheet_7: -2766214200102432621
       Archaeologist_Sprite_Sheet_8: 3611223161214793338
+      Archaeologist_Sprite_Sheet_9: 9222103246348240326
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

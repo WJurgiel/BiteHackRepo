@@ -6,6 +6,8 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "PlayerStatsSO", menuName = "ScriptableObjects/PlayerStatsSO")]
 public class PlayerStatsSO : ScriptableObject
 {
+    public int bonesPicked;
+    public int bonesToBePicked;
     public int dashSpeed;
     public float experience;
     public float expToNextLevel;
@@ -16,6 +18,7 @@ public class PlayerStatsSO : ScriptableObject
     private float expScaleFactor;
     [System.NonSerialized] public UnityEvent e_GetXP = new UnityEvent();
     [System.NonSerialized] public UnityEvent e_LevelUp = new UnityEvent();
+    [System.NonSerialized] public UnityEvent e_pickBone = new UnityEvent();
 
     public void OnEnable()
     {
@@ -43,5 +46,11 @@ public class PlayerStatsSO : ScriptableObject
             e_LevelUp.Invoke();
         }
     }
+
+    public void PickBone()
+    {
+        bonesPicked++;
+    }
+    
 
 }

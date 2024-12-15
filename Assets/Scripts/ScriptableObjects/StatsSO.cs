@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class StatsSO : ScriptableObject
 {
     public int health;
-    [SerializeField] private int maxHealth;
+    public int maxHealth;
     public int speed;
     public int defense;
     public int damage;
@@ -17,6 +17,8 @@ public class StatsSO : ScriptableObject
     [System.NonSerialized] public UnityEvent<int> e_increaseSpeedEvent = new UnityEvent<int>();
     [System.NonSerialized] public UnityEvent<int> e_increaseDefenseEvent = new UnityEvent<int>();
     [System.NonSerialized] public UnityEvent<int> e_increaseDamageEvent = new UnityEvent<int>();
+    [System.NonSerialized] public UnityEvent e_SetDead = new UnityEvent();
+    
     private void OnEnable()
     {
         HealYourselfFull();
@@ -26,9 +28,17 @@ public class StatsSO : ScriptableObject
     {
         Debug.Log("event eventuje");
         health -= damage;
+        CheckIfDead();
         e_getDamageEvent.Invoke(health);
     }
 
+    private void CheckIfDead()
+    {
+        if (health <= 0)
+        {
+            e_SetDead.Invoke();
+        }
+    }
     public void HealYourself(int amount)
     {
         health += amount;
@@ -57,4 +67,6 @@ public class StatsSO : ScriptableObject
         damage += toAdd;
         e_increaseDamageEvent.Invoke(damage);
     }
+
+    
 }

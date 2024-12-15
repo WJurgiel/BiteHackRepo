@@ -80,5 +80,8 @@ TagManager:
   - name: Deco
     uniqueID: 994239219
     locked: 0
+  - name: GuardText
+    uniqueID: 3983485845
+    locked: 0
   m_RenderingLayers:
   - Default

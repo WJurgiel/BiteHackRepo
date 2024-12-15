@@ -1,16 +1,20 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private StatsSO stats;
+    [SerializeField] private BoneSO bones;
     private float horizontal;
     private float vertical;
     private Rigidbody2D rb;
     private float hitRange = 0.3f;
     public LayerMask mapLayer; 
     private bool moveFlag = true;
+    private bool isMoving = true;
     private bool isShooting = false;
     private Animator animator;
 
@@ -26,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        moveFlag = Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f;
+        isMoving = Mathf.Abs(horizontal) > 0.1f || Mathf.Abs(vertical) > 0.1f;
 
         UpdateMovementAnimation();
 
@@ -42,13 +46,13 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isShooting", false);
         }
 
-        // CheckCollision();
+        CheckCollision();
         CheckMapCollision();
     }
 
     void FixedUpdate()
     {
-        if (!isShooting)
+        if (!isShooting && moveFlag)
         {
             Vector3 m_Input = new Vector3(horizontal, vertical, 0);
             rb.MovePosition(transform.position + m_Input * stats.speed * Time.fixedDeltaTime);
@@ -57,12 +61,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void CheckCollision()
     {
-        moveFlag = true;
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
         foreach (var hit in hits)
         {
-            if (hit.gameObject.tag == "Enemy")
-                moveFlag = false;
+            if (hit.gameObject.tag == "Guard")
+                moveFlag = CanMoveOutOfCollision(hits);
         }
     }
 
@@ -95,12 +98,55 @@ public class PlayerMovement : MonoBehaviour
     // animation functions
     private void UpdateMovementAnimation()
     {
-        animator.SetBool("isRunning", moveFlag);
+        animator.SetBool("isRunning", isMoving);
     }
 
     private void Shoot()
     {
         animator.SetTrigger("Shoot");
+    }
+    
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Bone")
+        {
+            bones.boneCurrent++;
+            Destroy(other.gameObject);
+            Debug.Log(bones.boneCurrent);
+        }
+        else if (other.gameObject.tag == "GuardTrigger")
+        {
+            CanvasGroup guardCanvas = other.gameObject.GetComponentInChildren<CanvasGroup>();
+            
+            if (bones.boneCurrent == bones.boneMax)
+            {
+                GameObject panel = guardCanvas.gameObject.GetComponentInChildren<Image>().gameObject;
+                TextMeshProUGUI text = panel.GetComponentInChildren<TextMeshProUGUI>();
+                text.text = "You have enough bones to pass!";
+            }
+            StartCoroutine(FadeCanvasOpacity(1f, 0.6f, guardCanvas));
+        }
+    }
+    public IEnumerator FadeCanvasOpacity(float targetOpacity, float duration, CanvasGroup canvasGroup)
+    {
+        float startOpacity = canvasGroup.alpha;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(startOpacity, targetOpacity, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure final opacity is set to target
+        canvasGroup.alpha = targetOpacity;
+        if (targetOpacity == 1.0f)
+        {
+            yield return new WaitForSeconds(4f);
+            StartCoroutine(FadeCanvasOpacity(0f, 1.0f, canvasGroup));
+            
+        }
     }
 
 }

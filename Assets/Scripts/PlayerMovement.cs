@@ -20,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isShooting = false;
     private Animator animator;
 
+    public float dashSpeed = 20f;
+    public float dashDuration = 0.2f;
+    public float dashCooldown = 1f;
+    private bool isDashing = false;
+    private float dashCooldownTimer = 0f;
     void Start()
     {
         mapLayer = UnityEngine.LayerMask.GetMask("Map");
@@ -42,6 +47,16 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+        
+        if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0 && !isDashing)
+        {
+            StartCoroutine(Dash());
+        }
+        // Cooldown timer
+        if (dashCooldownTimer > 0)
+        {
+            dashCooldownTimer -= Time.deltaTime;
+        }
         UpdateMovementAnimation();
 
         if (Input.GetButtonDown("Fire1")) {
@@ -63,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
     
     void FixedUpdate()
     {
-        if (!isShooting && moveFlag)
+        if (moveFlag && !isDashing)
         {
             Vector3 m_Input = new Vector3(horizontal, vertical, 0);
             rb.MovePosition(transform.position + m_Input * stats.speed * Time.fixedDeltaTime);
@@ -157,6 +172,24 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(FadeCanvasOpacity(0f, 1.0f, canvasGroup));
             
         }
+    }
+    private IEnumerator Dash()
+    {
+        isDashing = true; // Start dash
+        dashCooldownTimer = dashCooldown; // Set cooldown timer
+
+        // Determine dash direction based on current movement input
+        Vector2 dashDirection = new Vector2(horizontal, vertical).normalized;
+
+        // Perform dash movement by overriding Rigidbody velocity
+        rb.linearVelocity = dashDirection * dashSpeed;
+
+        // Wait for the dash duration
+        yield return new WaitForSeconds(dashDuration);
+
+        // Stop dash movement and reset velocity
+        rb.linearVelocity = Vector2.zero;
+        isDashing = false;
     }
 
 }

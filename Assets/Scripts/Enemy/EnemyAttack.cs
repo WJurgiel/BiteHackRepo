@@ -1,18 +1,25 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] private StatsSO playerStats;
+    private EnemyMovement enemyMovement;
     private Rigidbody2D rb;
     public UnityEvent knockbackEvent;
     public UnityEvent knockbackFromWallEvent;
     [SerializeField] private float hitRange = 0.1f;
     public LayerMask mapLayer; 
+    //3:56 AM- hardcoding, ready, steady, go
+    private float lastDamageTime = -Mathf.Infinity; // Czas ostatniego zadania obrażeń
+    [SerializeField] private float damageCooldown = 1f;
     void Start()
     {
         mapLayer = UnityEngine.LayerMask.GetMask("Map");
         rb=GetComponent<Rigidbody2D>();
+        enemyMovement = GetComponent<EnemyMovement>();
     }
 
     void Update()
@@ -27,14 +34,20 @@ public class EnemyAttack : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
         foreach (var hit in hits)
         {
-            if (hit.gameObject.tag == "Player")
+            if (hit.gameObject.tag == "Player"){}
                 hitCheck = true;
         }
 
         if (hitCheck)
         {
-            Debug.Log("Hit");
-            knockbackEvent.Invoke();
+            if (Time.time >= lastDamageTime + damageCooldown)
+            {
+                Debug.Log("Hit");
+                playerStats.GetDamage(Random.Range(enemyMovement.stats.damage - 5, enemyMovement.stats.damage + 5));
+                knockbackEvent.Invoke();
+                lastDamageTime = Time.time; // Zaktualizuj czas ostatniego zadania obrażeń
+            }
+            
         }
     }
     private void CheckMapCollision()

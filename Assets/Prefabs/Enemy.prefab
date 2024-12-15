@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 51860872010155580}
   - component: {fileID: 6511520800955737495}
   - component: {fileID: 3302914709621311325}
+  - component: {fileID: 3246502554642248694}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 914916491, guid: df6d876231e571a42aefe9eb730b937e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +119,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 7
 --- !u!61 &6000909759842080791
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,7 +158,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.375, y: 1.625}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -219,3 +220,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
   bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}
+--- !u!95 &3246502554642248694
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7dfb6b214b6a40742ad525319e9bc02f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

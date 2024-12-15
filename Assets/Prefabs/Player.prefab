@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 9119695232314437010}
   - component: {fileID: 7145629591798911855}
   - component: {fileID: 1288770322653448240}
-  - component: {fileID: 8786027853964523145}
+  - component: {fileID: 6721182756628298660}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -241,7 +241,7 @@ MonoBehaviour:
   bones: {fileID: 11400000, guid: a16bdf68f25d67c4f835e16711479adb, type: 2}
   mapLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!114 &7145629591798911855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
   playerStats: {fileID: 11400000, guid: 55414fe8615152c409657583d9a139e8, type: 2}
---- !u!95 &8786027853964523145
+--- !u!95 &6721182756628298660
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0

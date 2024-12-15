@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6000909759842080791}
   - component: {fileID: 51860872010155580}
   - component: {fileID: 6511520800955737495}
+  - component: {fileID: 3302914709621311325}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f11e0b743c70ba43aa5d82f4c7ead83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats: {fileID: 11400000, guid: bd4aecbc2a9afb14b86c7ea01539532c, type: 2}
   speed: 3
   KBForce: 1.5
   KBTotalTime: 0.1
@@ -191,13 +193,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba726e93f7c693f408c64891a2a86a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerStats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
   knockbackEvent:
     m_PersistentCalls:
       m_Calls: []
   knockbackFromWallEvent:
     m_PersistentCalls:
       m_Calls: []
-  hitRange: 0.1
+  hitRange: 0.05
   mapLayer:
     serializedVersion: 2
     m_Bits: 0
+  damageCooldown: 1
+--- !u!114 &3302914709621311325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6919472762537138315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a630b5b7158a0468d58ffcbbf48062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSO: {fileID: 11400000, guid: 0694a79a1cd6f8844b6e6a5ce8ffb04d, type: 2}
+  bloodParticles: {fileID: 4315891899014712740, guid: 98c252e37861883488bd5c2241cb138b, type: 3}

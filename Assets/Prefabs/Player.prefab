@@ -253,7 +253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSFX: {fileID: 8300000, guid: 08192e5253d35534eb3305328e019956, type: 3}
+  reloadSFX: {fileID: 8300000, guid: 55bdbf8d63660eb46930bdf709d72e63, type: 3}
   soundManagerSO: {fileID: 11400000, guid: 38b797d1e2c632246b7e23abf9afe931, type: 2}
+  gunSO: {fileID: 11400000, guid: d5fdb6ded3336d844971ee2ea7bd9aa0, type: 2}
   bulletPrefab: {fileID: 8344835280206501934, guid: 4a1742503e09ec14c9895f5def9e7eee, type: 3}
   bulletSpawn: {fileID: 7506247386098945089}
 --- !u!114 &1288770322653448240

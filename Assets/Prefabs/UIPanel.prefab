@@ -648,7 +648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -95.187, y: -44.4}
+  m_AnchoredPosition: {x: -55, y: -32.603}
   m_SizeDelta: {x: 81.096, y: 65.206}
   m_Pivot: {x: 0.49999982, y: 0.4999999}
 --- !u!222 &5418205649031194855
@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 1967400497428404544}
   - component: {fileID: 6101592079982564358}
   - component: {fileID: 4353307486930698060}
+  - component: {fileID: 927130671352665787}
   m_Layer: 5
   m_Name: UIPanel
   m_TagString: Untagged
@@ -979,6 +980,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &927130671352665787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4447771099813131155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7ca81d59e333c4595544b2bce986db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerGeneralStats: {fileID: 11400000, guid: 11eee87a57dbf014db9125461417d65c, type: 2}
+  playerStatsSO: {fileID: 0}
+  timeManager: {fileID: 11400000, guid: 6c9bfd21c4a448d43a038c6b5457ad7c, type: 2}
+  gun: {fileID: 11400000, guid: d5fdb6ded3336d844971ee2ea7bd9aa0, type: 2}
+  HealthImg: {fileID: 634855666603314114}
+  BulletTimeImg: {fileID: 2942400473102074764}
+  CurrentAmmoTMP: {fileID: 2696540365973788919}
+  BonesPickedTMP: {fileID: 0}
 --- !u!1 &4761095569893429672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1073,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0.000061574, y: 0.0000038147}
-  m_SizeDelta: {x: 216.091, y: 101.17}
+  m_SizeDelta: {x: 193.32, y: 101.17}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &8195152750089476807
 CanvasRenderer:
@@ -1082,7 +1103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "21/\u221E"
+  m_text: 21
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cd7c06f44c9e72c46bb9c9ea4430a572, type: 2}
   m_sharedMaterial: {fileID: 4489412165124204862, guid: cd7c06f44c9e72c46bb9c9ea4430a572, type: 2}

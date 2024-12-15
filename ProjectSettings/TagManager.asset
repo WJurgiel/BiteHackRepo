@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SFXPlayer
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

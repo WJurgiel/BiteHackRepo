@@ -21,7 +21,7 @@ public class PlayerBulletTime : MonoBehaviour
         {
             timeManager.EnterBulletTime();
         }
-         else if (Input.GetMouseButtonDown(1) && timeManager.isbulletTimeOn)
+        else if (Input.GetMouseButtonDown(1) && timeManager.isbulletTimeOn)
         {
             timeManager.ExitBulletTime();
         }

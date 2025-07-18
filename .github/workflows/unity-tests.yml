@@ -1,0 +1,48 @@
+name: Unity Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test:
+    name: Run Unity Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Cache Unity Packages
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ hashFiles('**/Packages/packages-lock.json') }}
+          restore-keys: |
+            Library-
+      
+      - name: Run Unity Edit Mode Tests
+        uses: game-ci/unity-test-runner@v4
+        with:
+          unityVersion: 6000.1.12f1
+          testMode: EditMode
+
+      - name: Upload Edit Mode Test Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: EditMode-test-results
+          path: artifacts
+
+      - name: Run Unity Play Mode Tests
+        uses: game-ci/unity-test-runner@v4
+        with:
+          unityVersion: 6000.1.12f1
+          testMode: PlayMode
+
+      - name: Upload Play Mode Test Results:
+        uses: actions/upload-artifact@v4
+        with:
+          name: PlayMode-test-results
+          path: artifacts

@@ -41,7 +41,7 @@ jobs:
           unityVersion: 6000.1.12f1
           testMode: PlayMode
 
-      - name: Upload Play Mode Test Results:
+      - name: Upload Play Mode Test Results
         uses: actions/upload-artifact@v4
         with:
           name: PlayMode-test-results

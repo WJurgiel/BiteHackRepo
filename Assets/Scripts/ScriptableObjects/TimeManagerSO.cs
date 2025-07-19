@@ -11,8 +11,8 @@ public class TimeManagerSO : ScriptableObject
 
     public float normalTimeScale = 1.0f;
     public float regainBulletTimeScale = 0.5f;
-    
-    public float bulletTimeAmount ;
+
+    public float bulletTimeAmount;
     public float maxBulletTimeAmount;
     public bool isbulletTimeOn = false;
 
@@ -30,12 +30,12 @@ public class TimeManagerSO : ScriptableObject
     }
     private void OnEnable()
     {
-        if(maxBulletTimeAmount == 0) Debug.Log("[TimeManagerSO] Max bullet time amount is 0");
-        isbulletTimeOn = false; 
-        
+        if (maxBulletTimeAmount == 0) Debug.Log("[TimeManagerSO] Max bullet time amount is 0");
+        isbulletTimeOn = false;
+
         bulletTimeAmount = maxBulletTimeAmount;
         Time.timeScale = normalTimeScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale; ;
     }
 
     public void EnterBulletTime()
@@ -66,7 +66,7 @@ public class TimeManagerSO : ScriptableObject
             e_UpdateBulletTime.Invoke();
             yield return null;
         }
-        if(bulletTimeAmount <= 0) bulletTimeAmount = 0;
+        if (bulletTimeAmount <= 0) bulletTimeAmount = 0;
         e_UpdateBulletTime.Invoke();
         ExitBulletTime();
     }
@@ -85,17 +85,17 @@ public class TimeManagerSO : ScriptableObject
     public void ExitBulletTime()
     {
         if (!isbulletTimeOn) return;
-        
+
         isbulletTimeOn = false;
-        
+
         Time.timeScale = normalTimeScale;
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        
+
         if (coroutineRunner != null)
         {
             coroutineRunner.StartCoroutine(RegainBulletTime());
         }
         e_ExitBulletTime.Invoke();
     }
-    
+
 }

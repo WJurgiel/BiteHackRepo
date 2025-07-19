@@ -11,7 +11,7 @@ public class SoundManagerSO : ScriptableObject
 
     public float bulletTimePitch = 0.2f;
     public float normalPitch = 1f;
-    
+
     public void PlaySoundFXClip(AudioClip clip, Vector3 soundPos, float volume)
     {
         float pitch = (timeManager.isbulletTimeOn) ? bulletTimePitch : normalPitch;

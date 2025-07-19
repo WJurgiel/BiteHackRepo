@@ -25,8 +25,8 @@ public class BackgroundMusic : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         timeManagerSO.e_EnterBulletTime.AddListener(ChangePitch);
         timeManagerSO.e_ExitBulletTime.AddListener(ChangePitch);
-        
-        
+
+
         audioSource.clip = backgroundMusics[0]; // change to the first clip
         audioSource.Play();
     }

@@ -18,12 +18,12 @@ public class StatsSO : ScriptableObject
     [System.NonSerialized] public UnityEvent<int> e_increaseDefenseEvent = new UnityEvent<int>();
     [System.NonSerialized] public UnityEvent<int> e_increaseDamageEvent = new UnityEvent<int>();
     [System.NonSerialized] public UnityEvent e_SetDead = new UnityEvent();
-    
+
     private void OnEnable()
     {
         HealYourselfFull();
     }
-    
+
     public void GetDamage(int damage)
     {
         health -= damage;
@@ -68,5 +68,5 @@ public class StatsSO : ScriptableObject
         e_increaseDamageEvent.Invoke(damage);
     }
 
-    
+
 }

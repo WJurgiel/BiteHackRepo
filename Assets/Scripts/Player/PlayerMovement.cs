@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float vertical;
     private Rigidbody2D rb;
     private float hitRange = 0.3f;
-    public LayerMask mapLayer; 
+    public LayerMask mapLayer;
     private bool moveFlag = true;
     private bool isMoving = true;
     private bool isShooting = false;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
-        
+
         if (Input.GetKeyDown(KeyCode.LeftShift) && dashCooldownTimer <= 0 && !isDashing)
         {
             StartCoroutine(Dash());
@@ -59,7 +59,8 @@ public class PlayerMovement : MonoBehaviour
         }
         UpdateMovementAnimation();
 
-        if (Input.GetButtonDown("Fire1")) {
+        if (Input.GetButtonDown("Fire1"))
+        {
             isShooting = true;
             animator.SetBool("isShooting", true);
             Shoot();
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         CheckMapCollision();
     }
 
-    
+
     void FixedUpdate()
     {
         if (moveFlag && !isDashing)
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             rb.MovePosition(transform.position + m_Input * stats.speed * Time.fixedDeltaTime);
         }
     }
-    
+
     private void CheckCollision()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
@@ -103,9 +104,9 @@ public class PlayerMovement : MonoBehaviour
             moveFlag = CanMoveOutOfCollision(hits);
         }
 
-        
+
     }
-    
+
     private bool CanMoveOutOfCollision(Collider2D[] hits)
     {
         foreach (var hit in hits)
@@ -131,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
     {
         animator.SetTrigger("Shoot");
     }
-    
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Bone")
@@ -142,7 +143,7 @@ public class PlayerMovement : MonoBehaviour
         else if (other.gameObject.tag == "GuardTrigger")
         {
             CanvasGroup guardCanvas = other.gameObject.GetComponentInChildren<CanvasGroup>();
-            
+
             if (bones.boneCurrent >= bones.boneMax)
             {
                 GameObject panel = guardCanvas.gameObject.GetComponentInChildren<Image>().gameObject;
@@ -170,7 +171,7 @@ public class PlayerMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(4f);
             StartCoroutine(FadeCanvasOpacity(0f, 1.0f, canvasGroup));
-            
+
         }
     }
     private IEnumerator Dash()

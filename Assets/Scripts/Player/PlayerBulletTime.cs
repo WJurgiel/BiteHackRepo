@@ -9,7 +9,7 @@ public class PlayerBulletTime : MonoBehaviour
     {
         timeManager.Initialize(this);
     }
-    
+
 
     void Update()
     {

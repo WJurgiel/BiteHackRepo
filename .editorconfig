@@ -1,6 +1,10 @@
 root = true
 
-[*.cs]
-dotnet_diagnostic.SA1300.severity = error
-dotnet_diagnostic.SA1309.severity = error
-dotnet_diagnostic.SA1101.severity = error
+[Assets/Scripts/**.cs]
+dotnet_diagnostic.SA1300.severity = error # element must begin with upper case letter
+dotnet_diagnostic.SA1309.severity = error # names must not start with underscore
+dotnet_diagnostic.SA1507.severity = error # no multiple lines in a row
+dotnet_diagnostic.SA1516.severity = error # elements must be seperated by blank line
+dotnet_diagnostic.SA1101.severity = none # prefix local calls with this 
+dotnet_diagnostic.SA1413.severity = none # use trailing commas in multiline initializers
+dotnet_diagnostic.SA1633.severity = none # must have a header

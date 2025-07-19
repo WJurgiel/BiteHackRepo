@@ -18,7 +18,7 @@ public class StatisticsUI : MonoBehaviour
     [SerializeField] private TMP_Text BonesPickedTMP;
     void Awake()
     {
-        
+
     }
     void Start()
     {
@@ -30,39 +30,39 @@ public class StatisticsUI : MonoBehaviour
         BulletTimeUpdate();
         AmmoTMPUpdate();
         BonesPickedTMPUpdate();
-        
+
         playerGeneralStats.e_healhYourselfEvent.AddListener(HealthUpdate);
         playerGeneralStats.e_getDamageEvent.AddListener(HealthUpdate);
-        
+
         playerGeneralStats.e_increaseDamageEvent.AddListener(DamageTMPUpdate);
         playerGeneralStats.e_increaseSpeedEvent.AddListener(SpeedTMPUpdate);
         playerGeneralStats.e_increaseDefenseEvent.AddListener(DefenseTMPUpdate);
-        
+
         timeManager.e_UpdateBulletTime.AddListener(BulletTimeUpdate);
         gun.e_Shoot.AddListener(AmmoTMPUpdate);
         gun.e_Reload.AddListener(AmmoTMPUpdate);
-        
+
         bones.e_Pickup.AddListener(BonesPickedTMPUpdate);
         bones.e_Reset.AddListener((BonesPickedTMPUpdate));
-        
+
         // Debug.Log(healthTMP.text);
     }
 
 
-    private void HealthUpdate(int health=-1)
+    private void HealthUpdate(int health = -1)
     {
         HealthImg.fillAmount = (float)(playerGeneralStats.health) / playerGeneralStats.maxHealth;
     }
 
-    private void DamageTMPUpdate(int amount=-1)
+    private void DamageTMPUpdate(int amount = -1)
     {
     }
 
-    private void SpeedTMPUpdate(int amount=-1)
+    private void SpeedTMPUpdate(int amount = -1)
     {
     }
 
-    private void DefenseTMPUpdate(int amount=-1)
+    private void DefenseTMPUpdate(int amount = -1)
     {
     }
 

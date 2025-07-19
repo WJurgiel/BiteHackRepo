@@ -33,7 +33,7 @@ public class PostProcessController : MonoBehaviour
         {
             elapsedTime += Time.unscaledDeltaTime;
             float t = elapsedTime / duration;
-            
+
             vignette.intensity.value = Mathf.Lerp(startValue, target, t);
             yield return null;
         }

@@ -23,8 +23,10 @@ public class PlayerStatsSO : ScriptableObject
     public void OnEnable()
     {
         //w sumie pamietac o wczytywaniu levela i innych statow z playerprefs
-        if(level == 0 ) level = 1; 
-        expToNextLevel = level * 100 * expScaleFactor; 
+        if (level == 0) level = 1;
+        expToNextLevel = level * 100 * expScaleFactor;
+
+
     }
 
     public void GetXP(int amount)
@@ -51,6 +53,6 @@ public class PlayerStatsSO : ScriptableObject
     {
         bonesPicked++;
     }
-    
+
 
 }

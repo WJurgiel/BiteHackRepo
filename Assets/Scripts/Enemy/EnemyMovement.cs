@@ -8,13 +8,13 @@ public class EnemyMovement : MonoBehaviour
     GameObject player;
     private EnemyAttack knockbackEmitter;
     private Rigidbody2D rb;
-    
+
     [SerializeField] private float speed = 5f;
     private float distance;
     [SerializeField] private float startChaseDistance = 6f;
     private bool chaseFlag = false;
     private Vector2 direction;
-    
+
     [SerializeField]
     private float KBForce = 0.3f;
     private float KBCounter = 0;
@@ -28,14 +28,14 @@ public class EnemyMovement : MonoBehaviour
         knockbackEmitter = GetComponent<EnemyAttack>();
         knockbackEmitter.knockbackEvent.AddListener(EnemyHit);
         knockbackEmitter.knockbackFromWallEvent.AddListener(EnemyHitWall);
-        
-        
+
+
     }
 
     void Start()
     {
 
-        rb=GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -46,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
         distance = Vector2.Distance(player.transform.position, transform.position);
         if (chaseFlag)
         {
-            
+
             if (KBCounter <= 0)
             {
                 direction = returnDirection();
@@ -54,7 +54,7 @@ public class EnemyMovement : MonoBehaviour
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position,  transform.position + (transform.position - player.transform.position).normalized, KBForce * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, transform.position + (transform.position - player.transform.position).normalized, KBForce * Time.deltaTime);
                 KBCounter -= Time.deltaTime;
             }
         }
@@ -62,7 +62,7 @@ public class EnemyMovement : MonoBehaviour
         {
             CheckIfCanChase();
         }
-        
+
         if (returnDirection().x > 0)
         {
             spriteRenderer.flipX = false;
@@ -71,9 +71,9 @@ public class EnemyMovement : MonoBehaviour
         {
             spriteRenderer.flipX = true;
         }
-    
+
     }
-    
+
 
     private Vector2 returnDirection()
     {
@@ -96,6 +96,6 @@ public class EnemyMovement : MonoBehaviour
     {
         KBCounter = 0.1f;
     }
-    
+
 
 }

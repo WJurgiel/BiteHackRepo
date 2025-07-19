@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Bullet"))
-        {   
+        {
             health -= bulletSO.damage;
             Debug.Log($"Diddy health: {health}");
             Destroy(collision.gameObject);
@@ -31,6 +31,6 @@ public class Enemy : MonoBehaviour
             Instantiate(bloodParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-     
+
     }
 }

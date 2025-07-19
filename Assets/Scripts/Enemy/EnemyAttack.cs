@@ -11,14 +11,14 @@ public class EnemyAttack : MonoBehaviour
     public UnityEvent knockbackEvent;
     public UnityEvent knockbackFromWallEvent;
     [SerializeField] private float hitRange = 0.1f;
-    public LayerMask mapLayer; 
+    public LayerMask mapLayer;
     //3:56 AM- hardcoding, ready, steady, go
     private float lastDamageTime = -Mathf.Infinity; // Czas ostatniego zadania obrażeń
     [SerializeField] private float damageCooldown = 1f;
     void Start()
     {
         mapLayer = UnityEngine.LayerMask.GetMask("Map");
-        rb=GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         enemyMovement = GetComponent<EnemyMovement>();
     }
 
@@ -27,7 +27,7 @@ public class EnemyAttack : MonoBehaviour
         CheckCollision();
         CheckMapCollision();
     }
-    
+
     private void CheckCollision()
     {
         bool hitCheck = false;
@@ -48,7 +48,7 @@ public class EnemyAttack : MonoBehaviour
                 knockbackEvent.Invoke();
                 lastDamageTime = Time.time; // Zaktualizuj czas ostatniego zadania obrażeń
             }
-            
+
         }
     }
     private void CheckMapCollision()
@@ -59,7 +59,7 @@ public class EnemyAttack : MonoBehaviour
             knockbackFromWallEvent.Invoke();
         }
 
-        
+
     }
 
 }

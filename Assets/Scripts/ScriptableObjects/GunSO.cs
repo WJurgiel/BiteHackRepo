@@ -26,5 +26,5 @@ public class GunSO : ScriptableObject
         ammoCurrent = maxAmmo;
         e_Reload.Invoke();
     }
-    
+
 }

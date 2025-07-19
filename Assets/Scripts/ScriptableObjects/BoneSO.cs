@@ -7,10 +7,10 @@ public class BoneSO : ScriptableObject
 {
     public int boneCurrent;
     public int boneMax;
-    
+
     public void OnEnable()
     {
-        boneCurrent = 0; 
+        boneCurrent = 0;
     }
     [NonSerialized] public UnityEvent e_Pickup = new UnityEvent();
     [NonSerialized] public UnityEvent e_Reset = new UnityEvent();

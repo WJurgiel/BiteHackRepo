@@ -7,9 +7,36 @@ on:
   pull_request:
 
 jobs:
+  no-compile-errors:
+    name: Check for Compile Errors
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+      - name: Cache Unity Packages
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ hashFiles('**/Packages/packages-lock.json') }}
+          restore-keys: |
+            Library-
+      - name: Check for compile errors
+        uses: game-ci/unity-builder@v4
+        with:
+          unityVersion: 6000.1.12f1
+          targetPlatform: StandaloneLinux64
+          allowDirtyBuild: true
+          buildMethod: ""
+        env:
+          UNITY_LICENSE: ${{secrets.UNITY_LICENSE}}
+          UNITY_EMAIL: ${{secrets.UNITY_EMAIL}}
+          UNITY_PASSWORD: ${{secrets.UNITY_PASSWORD}}
+
   edit-mode:
     name: Run EditMode Tests
     runs-on: ubuntu-latest
+    needs: no-compile-errors
 
     steps:
       - name: Checkout Repo
@@ -35,14 +62,14 @@ jobs:
 
       - name: Upload Edit Mode Test Results
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: EditMode-test-results
-          path: ${{steps.RunUnityEditModeTests.outputs.coveragePath}}
+          path: artifacts
 
   play-mode:
     name: Run PlayMode Tests
     runs-on: ubuntu-latest
+    needs: no-compile-errors
 
     steps:
       - name: Checkout Repo

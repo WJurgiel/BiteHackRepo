@@ -101,6 +101,7 @@ jobs:
 
   linter-checks:
     name: Run Linter Checks
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4

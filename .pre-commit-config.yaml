@@ -6,3 +6,9 @@ repos:
         entry: dotnet format Scripts.csproj --no-restore --verbosity diagnostic --include "$@"
         language: system
         files: ^Assets/Scripts/.*\.cs$
+
+      - id: check-no-project-errors
+        name: check no project errors
+        entry: dotnet build Scripts.csproj --warnaserror
+        language: system
+        pass_filenames: false

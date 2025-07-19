@@ -62,14 +62,14 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             isShooting = true;
-            animator.SetBool("isShooting", true);
+            animator.SetBool("isShooting", isShooting);
             Shoot();
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
             isShooting = false;
-            animator.SetBool("isShooting", false);
+            animator.SetBool("isShooting", isShooting);
         }
 
         CheckCollision();

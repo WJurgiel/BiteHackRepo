@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttack knockbackEmitter;
     private Rigidbody2D rb;
 
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed;
     private float distance;
     [SerializeField] private float startChaseDistance = 6f;
     private bool chaseFlag = false;

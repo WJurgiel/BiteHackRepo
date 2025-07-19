@@ -4,7 +4,7 @@ using UnityEngine.Rendering.Universal;
 public class MagicStone : MonoBehaviour
 {
     private SpriteRenderer sr;
-    private Light2D light;
+    private new Light2D light;
     [SerializeField] private Sprite[] stoneSprites;
     [SerializeField] private BoneSO bone;
     void Start()

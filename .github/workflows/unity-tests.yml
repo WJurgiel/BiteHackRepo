@@ -121,6 +121,6 @@ jobs:
 
       - name: Run dotnet format on solution
         run:
-          dotnet format BiteHackRepo.sln --verify-no-changes --severity error --no-restore
+          dotnet format Scripts.csproj --verify-no-changes --severity error --no-restore
 
 

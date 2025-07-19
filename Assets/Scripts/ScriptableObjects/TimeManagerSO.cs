@@ -4,98 +4,99 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 
-[CreateAssetMenu(fileName = "TimeManager", menuName = "ScriptableObjects/TimeManagerSO")]
-public class TimeManagerSO : ScriptableObject
+namespace ScriptableObjects
 {
-    public float bulletTimeScale = 0.2f;
-
-    public float normalTimeScale = 1.0f;
-    public float regainBulletTimeScale = 0.5f;
-
-    public float bulletTimeAmount;
-    public float maxBulletTimeAmount;
-    public bool isbulletTimeOn = false;
-
-    public float bulletTimePitch = 0.8f;
-    [NonSerialized] public UnityEvent e_EnterBulletTime = new UnityEvent();
-    [NonSerialized] public UnityEvent e_ExitBulletTime = new UnityEvent();
-    //Be careful with this one, it's invoked everytime in Coroutine 
-    [NonSerialized] public UnityEvent e_UpdateBulletTime = new UnityEvent();
-
-    private MonoBehaviour coroutineRunner;
-
-    public void Initialize(MonoBehaviour runner)
+    [CreateAssetMenu(fileName = "TimeManager", menuName = "ScriptableObjects/TimeManagerSO")]
+    public class TimeManagerSo : ScriptableObject
     {
-        coroutineRunner = runner;
-    }
-    private void OnEnable()
-    {
-        if (maxBulletTimeAmount == 0) Debug.Log("[TimeManagerSO] Max bullet time amount is 0");
-        isbulletTimeOn = false;
+        public float bulletTimeScale = 0.2f;
 
-        bulletTimeAmount = maxBulletTimeAmount;
-        Time.timeScale = normalTimeScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale; ;
-    }
+        public float normalTimeScale = 1.0f;
+        public float regainBulletTimeScale = 0.5f;
 
-    public void EnterBulletTime()
-    {
-        if (isbulletTimeOn || bulletTimeAmount <= 0) return; // Sprawdź, czy można aktywować bullet-time
+        public float bulletTimeAmount;
+        public float maxBulletTimeAmount;
+        [FormerlySerializedAs("isbulletTimeOn")] public bool isBulletTimeOn;
 
-        isbulletTimeOn = true;
-        Time.timeScale = bulletTimeScale; // Włącz slow-motion
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        e_EnterBulletTime.Invoke(); // Wywołaj event
+        public float bulletTimePitch = 0.8f;
+        [NonSerialized] public readonly UnityEvent EEnterBulletTime = new UnityEvent();
+        [NonSerialized] public readonly UnityEvent EExitBulletTime = new UnityEvent();
+        [NonSerialized] public readonly UnityEvent EUpdateBulletTime = new UnityEvent();
 
-        // Rozpocznij asynchroniczne odliczanie
-        if (coroutineRunner != null)
+        private MonoBehaviour _coroutineRunner;
+
+        public void Initialize(MonoBehaviour runner)
         {
-            coroutineRunner.StartCoroutine(DrainBulletTime());
+            _coroutineRunner = runner;
         }
-        else
+        private void OnEnable()
         {
-            Debug.LogError("[TimeManagerSO] No coroutine runner has been added");
-        }
-    }
+            if (maxBulletTimeAmount == 0) Debug.Log("[TimeManagerSO] Max bullet time amount is 0");
+            isBulletTimeOn = false;
 
-    private IEnumerator DrainBulletTime()
-    {
-        while (isbulletTimeOn && bulletTimeAmount > 0)
+            bulletTimeAmount = maxBulletTimeAmount;
+            Time.timeScale = normalTimeScale;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        }
+
+        public void EnterBulletTime()
         {
-            bulletTimeAmount -= Time.unscaledDeltaTime * regainBulletTimeScale; // Zmniejsz czas niezależnie od Time.timeScale
-            e_UpdateBulletTime.Invoke();
-            yield return null;
-        }
-        if (bulletTimeAmount <= 0) bulletTimeAmount = 0;
-        e_UpdateBulletTime.Invoke();
-        ExitBulletTime();
-    }
+            if (isBulletTimeOn || bulletTimeAmount <= 0) return;
 
-    private IEnumerator RegainBulletTime()
-    {
-        while (!isbulletTimeOn && bulletTimeAmount < maxBulletTimeAmount)
+            isBulletTimeOn = true;
+            Time.timeScale = bulletTimeScale;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            EEnterBulletTime.Invoke();
+
+            if (_coroutineRunner != null)
+            {
+                _coroutineRunner.StartCoroutine(DrainBulletTime());
+            }
+            else
+            {
+                Debug.LogError("[TimeManagerSO] No coroutine runner has been added");
+            }
+        }
+
+        private IEnumerator DrainBulletTime()
         {
-            bulletTimeAmount += Time.unscaledDeltaTime * regainBulletTimeScale;
-            e_UpdateBulletTime.Invoke(); // I think it's bad, but maybe it isn't? Who knows
-            yield return null;
+            while (isBulletTimeOn && bulletTimeAmount > 0)
+            {
+                bulletTimeAmount -= Time.unscaledDeltaTime * regainBulletTimeScale;
+                EUpdateBulletTime.Invoke();
+                yield return null;
+            }
+            if (bulletTimeAmount <= 0) bulletTimeAmount = 0;
+            EUpdateBulletTime.Invoke();
+            ExitBulletTime();
         }
-        // bulletTimeAmount = maxBulletTimeAmount;
-        e_UpdateBulletTime.Invoke();
-    }
-    public void ExitBulletTime()
-    {
-        if (!isbulletTimeOn) return;
 
-        isbulletTimeOn = false;
-
-        Time.timeScale = normalTimeScale;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-
-        if (coroutineRunner != null)
+        private IEnumerator RegainBulletTime()
         {
-            coroutineRunner.StartCoroutine(RegainBulletTime());
+            while (!isBulletTimeOn && bulletTimeAmount < maxBulletTimeAmount)
+            {
+                bulletTimeAmount += Time.unscaledDeltaTime * regainBulletTimeScale;
+                EUpdateBulletTime.Invoke(); // I think it's bad, but maybe it isn't? Who knows
+                yield return null;
+            }
+            // bulletTimeAmount = maxBulletTimeAmount;
+            EUpdateBulletTime.Invoke();
         }
-        e_ExitBulletTime.Invoke();
-    }
+        public void ExitBulletTime()
+        {
+            if (!isBulletTimeOn) return;
 
+            isBulletTimeOn = false;
+
+            Time.timeScale = normalTimeScale;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+            if (_coroutineRunner != null)
+            {
+                _coroutineRunner.StartCoroutine(RegainBulletTime());
+            }
+            EExitBulletTime.Invoke();
+        }
+
+    }
 }

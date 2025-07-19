@@ -1,35 +1,35 @@
-using System.Collections;
-using Unity.VisualScripting;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
-public class ButtonFunctions : MonoBehaviour
+namespace UI
 {
-    [SerializeField]
-    private BoneSO bone;
-    public void GoToMainMenu()
+    public class ButtonFunctions : MonoBehaviour
     {
-        SceneManager.LoadScene("MainMenu");
-    }
-    public void ContinueGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        bone.boneCurrent = 0;
-    }
-    public void NewGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        bone.boneCurrent = 0;
-    }
-    public void ShowSettings()
-    {
+        [SerializeField]
+        private BoneSo bone;
+        public void GoToMainMenu()
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        public void ContinueGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            bone.boneCurrent = 0;
+        }
+        public void NewGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            bone.boneCurrent = 0;
+        }
+        public void ShowSettings()
+        {
+
+        }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
 
     }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-
 }

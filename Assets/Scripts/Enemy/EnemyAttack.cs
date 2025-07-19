@@ -1,65 +1,56 @@
-using System;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-public class EnemyAttack : MonoBehaviour
+namespace Enemy
 {
-    [SerializeField] private StatsSO playerStats;
-    private EnemyMovement enemyMovement;
-    private Rigidbody2D rb;
-    public UnityEvent knockbackEvent;
-    public UnityEvent knockbackFromWallEvent;
-    [SerializeField] private float hitRange = 0.1f;
-    public LayerMask mapLayer;
-    //3:56 AM- hardcoding, ready, steady, go
-    private float lastDamageTime = -Mathf.Infinity; // Czas ostatniego zadania obrażeń
-    [SerializeField] private float damageCooldown = 1f;
-    void Start()
+    public class EnemyAttack : MonoBehaviour
     {
-        mapLayer = UnityEngine.LayerMask.GetMask("Map");
-        rb = GetComponent<Rigidbody2D>();
-        enemyMovement = GetComponent<EnemyMovement>();
-    }
-
-    void Update()
-    {
-        CheckCollision();
-        CheckMapCollision();
-    }
-
-    private void CheckCollision()
-    {
-        bool hitCheck = false;
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
-        Debug.DrawRay(transform.position, Vector3.down * hitRange, Color.red);
-        foreach (var hit in hits)
+        [SerializeField] private StatsSo playerStats;
+        private EnemyMovement _enemyMovement;
+        public UnityEvent knockbackEvent;
+        public UnityEvent knockbackFromWallEvent;
+        [SerializeField] private float hitRange = 0.1f;
+        public LayerMask mapLayer;
+        private float _lastDamageTime = -Mathf.Infinity;
+        [SerializeField] private float damageCooldown = 1f;
+        void Start()
         {
-            if (hit.gameObject.tag == "Player")
-                hitCheck = true;
-
+            mapLayer = LayerMask.GetMask("Map");
+            _enemyMovement = GetComponent<EnemyMovement>();
         }
 
-        if (hitCheck)
+        void Update()
         {
-            if (Time.time >= lastDamageTime + damageCooldown)
+            CheckCollision();
+            CheckMapCollision();
+        }
+
+        private void CheckCollision()
+        {
+            bool hitCheck = false;
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange);
+            Debug.DrawRay(transform.position, Vector3.down * hitRange, Color.red);
+            foreach (var hit in hits)
             {
-                playerStats.GetDamage(Random.Range(enemyMovement.stats.damage - 5, enemyMovement.stats.damage + 5));
-                knockbackEvent.Invoke();
-                lastDamageTime = Time.time; // Zaktualizuj czas ostatniego zadania obrażeń
+                if (hit.gameObject.CompareTag("Player"))
+                    hitCheck = true;
+
             }
-
+            if (!hitCheck) return;
+            if (!(Time.time >= _lastDamageTime + damageCooldown)) return;
+            playerStats.GetDamage(Random.Range(_enemyMovement.stats.damage - 5, _enemyMovement.stats.damage + 5));
+            knockbackEvent.Invoke();
+            _lastDamageTime = Time.time;
         }
-    }
-    private void CheckMapCollision()
-    {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange, mapLayer);
-        if (hits.Length > 0)
+        private void CheckMapCollision()
         {
-            knockbackFromWallEvent.Invoke();
+            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, hitRange, mapLayer);
+            if (hits.Length > 0)
+            {
+                knockbackFromWallEvent.Invoke();
+            }
         }
-
-
     }
-
 }

@@ -1,10 +1,12 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "BulletSO", menuName = "ScriptableObjects/BulletSO")]
-public class BulletSO : ScriptableObject
+
+namespace ScriptableObjects
 {
-    public int speed;
-    public int damage;
-    public float range;
-
-
+    [CreateAssetMenu(fileName = "BulletSO", menuName = "ScriptableObjects/BulletSO")]
+    public class BulletSo : ScriptableObject
+    {
+        public int speed;
+        public int damage;
+        public float range;
+    }
 }

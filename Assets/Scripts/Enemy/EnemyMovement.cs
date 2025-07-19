@@ -1,101 +1,82 @@
-using System;
+using ScriptableObjects;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Serialization;
 
-public class EnemyMovement : MonoBehaviour
+namespace Enemy
 {
-    public StatsSO stats;
-    GameObject player;
-    private EnemyAttack knockbackEmitter;
-    private Rigidbody2D rb;
-
-    [SerializeField] private float speed;
-    private float distance;
-    [SerializeField] private float startChaseDistance = 6f;
-    private bool chaseFlag = false;
-    private Vector2 direction;
-
-    [SerializeField]
-    private float KBForce = 0.3f;
-    private float KBCounter = 0;
-    [SerializeField]
-    private float KBTotalTime = 0.5f;
-
-    private SpriteRenderer spriteRenderer;
-
-    void Awake()
+    public class EnemyMovement : MonoBehaviour
     {
-        knockbackEmitter = GetComponent<EnemyAttack>();
-        knockbackEmitter.knockbackEvent.AddListener(EnemyHit);
-        knockbackEmitter.knockbackFromWallEvent.AddListener(EnemyHitWall);
+        public StatsSo stats;
+        private GameObject _player;
+        private EnemyAttack _knockbackEmitter;
 
+        [SerializeField] private float speed;
+        private float _distance;
+        [SerializeField] private float startChaseDistance = 6f;
+        private bool _chaseFlag;
 
-    }
+        [FormerlySerializedAs("KBForce")]
+        [SerializeField]
+        private float kbForce = 0.3f;
+        private float _kbCounter;
+        [FormerlySerializedAs("KBTotalTime")]
+        [SerializeField]
+        private float kbTotalTime = 0.5f;
+        private SpriteRenderer _spriteRenderer;
 
-    void Start()
-    {
-
-        rb = GetComponent<Rigidbody2D>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        distance = Vector2.Distance(player.transform.position, transform.position);
-        if (chaseFlag)
+        void Awake()
         {
-
-            if (KBCounter <= 0)
+            _knockbackEmitter = GetComponent<EnemyAttack>();
+            _knockbackEmitter.knockbackEvent.AddListener(EnemyHit);
+            _knockbackEmitter.knockbackFromWallEvent.AddListener(EnemyHitWall);
+        }
+        void Start()
+        {
+            _player = GameObject.FindGameObjectWithTag("Player");
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        void Update()
+        {
+            _distance = Vector2.Distance(_player.transform.position, transform.position);
+            if (_chaseFlag)
             {
-                direction = returnDirection();
-                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, stats.speed * Time.deltaTime);
+
+                if (_kbCounter <= 0)
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, _player.transform.position, stats.speed * Time.deltaTime);
+                }
+                else
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, transform.position + (transform.position - _player.transform.position).normalized, kbForce * Time.deltaTime);
+                    _kbCounter -= Time.deltaTime;
+                }
             }
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, transform.position + (transform.position - player.transform.position).normalized, KBForce * Time.deltaTime);
-                KBCounter -= Time.deltaTime;
+                CheckIfCanChase();
+            }
+
+            _spriteRenderer.flipX = !(ReturnDirection().x > 0);
+        }
+        private Vector2 ReturnDirection()
+        {
+            return _player.transform.position - transform.position;
+        }
+        private void CheckIfCanChase()
+        {
+            if (_distance <= startChaseDistance)
+            {
+                _chaseFlag = true;
             }
         }
-        else
+        private void EnemyHit()
         {
-            CheckIfCanChase();
+            _kbCounter = kbTotalTime;
         }
 
-        if (returnDirection().x > 0)
+        private void EnemyHitWall()
         {
-            spriteRenderer.flipX = false;
-        }
-        else
-        {
-            spriteRenderer.flipX = true;
-        }
-
-    }
-
-
-    private Vector2 returnDirection()
-    {
-        return player.transform.position - transform.position;
-    }
-
-    private void CheckIfCanChase()
-    {
-        if (distance <= startChaseDistance)
-        {
-            chaseFlag = true;
+            _kbCounter = 0.1f;
         }
     }
-
-    public void EnemyHit()
-    {
-        KBCounter = KBTotalTime;
-    }
-    public void EnemyHitWall()
-    {
-        KBCounter = 0.1f;
-    }
-
-
 }

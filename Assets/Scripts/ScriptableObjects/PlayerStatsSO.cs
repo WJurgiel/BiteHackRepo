@@ -1,58 +1,46 @@
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "PlayerStatsSO", menuName = "ScriptableObjects/PlayerStatsSO")]
-public class PlayerStatsSO : ScriptableObject
+namespace ScriptableObjects
 {
-    public int bonesPicked;
-    public int bonesToBePicked;
-    public int dashSpeed;
-    public float experience;
-    public float expToNextLevel;
-    public int level;
-    public int equippedGunID;
-
-    [SerializeField]
-    private float expScaleFactor;
-    [System.NonSerialized] public UnityEvent e_GetXP = new UnityEvent();
-    [System.NonSerialized] public UnityEvent e_LevelUp = new UnityEvent();
-    [System.NonSerialized] public UnityEvent e_pickBone = new UnityEvent();
-
-    public void OnEnable()
+    [CreateAssetMenu(fileName = "PlayerStatsSO", menuName = "ScriptableObjects/PlayerStatsSO")]
+    public class PlayerStatsSo : ScriptableObject
     {
-        //w sumie pamietac o wczytywaniu levela i innych statow z playerprefs
-        if (level == 0) level = 1;
-        expToNextLevel = level * 100 * expScaleFactor;
+        public int bonesPicked;
+        public int bonesToBePicked;
+        public int dashSpeed;
+        public float experience;
+        public float expToNextLevel;
+        public int level;
+        public int equippedGunID;
 
+        [SerializeField]
+        private float expScaleFactor;
+        [System.NonSerialized] private readonly UnityEvent _eGetXp = new UnityEvent();
+        [System.NonSerialized] private readonly UnityEvent _eLevelUp = new UnityEvent();
 
-    }
-
-    public void GetXP(int amount)
-    {
-        experience += amount;
-        CheckIfLevelUp();
-        e_GetXP.Invoke();
-    }
-
-    private void CheckIfLevelUp()
-    {
-        if (experience >= expToNextLevel)
+        public void OnEnable()
         {
-            level++;
-            float toAdd = Mathf.Floor(experience - expToNextLevel);
-            experience = toAdd;
+            if (level == 0) level = 1;
             expToNextLevel = level * 100 * expScaleFactor;
-            Debug.Log($"EXP: {experience}/{expToNextLevel}, Level: {level}");
-            e_LevelUp.Invoke();
+        }
+        public void GetXp(int amount)
+        {
+            experience += amount;
+            CheckIfLevelUp();
+            _eGetXp.Invoke();
+        }
+        private void CheckIfLevelUp()
+        {
+            if (experience >= expToNextLevel)
+            {
+                level++;
+                float toAdd = Mathf.Floor(experience - expToNextLevel);
+                experience = toAdd;
+                expToNextLevel = level * 100 * expScaleFactor;
+                Debug.Log($"EXP: {experience}/{expToNextLevel}, Level: {level}");
+                _eLevelUp.Invoke();
+            }
         }
     }
-
-    public void PickBone()
-    {
-        bonesPicked++;
-    }
-
-
 }

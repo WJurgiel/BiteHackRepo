@@ -1,37 +1,39 @@
-using System;
+using ScriptableObjects;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
+using UnityEngine.Serialization;
 
-public class BackgroundMusic : MonoBehaviour
+namespace Audio
 {
-    public static BackgroundMusic instance;
-    [SerializeField] private AudioClip[] backgroundMusics; // i mean there should be 3, for each level
-    [SerializeField] private TimeManagerSO timeManagerSO;
-    private AudioSource audioSource;
-    private void Awake()
+    public class BackgroundMusic : MonoBehaviour
     {
-        if (instance == null)
+        private static BackgroundMusic _instance;
+        [SerializeField] private AudioClip[] backgroundMusics; // i mean there should be 3, for each level
+        [FormerlySerializedAs("timeManagerSO")][SerializeField] private TimeManagerSo timeManagerSo;
+        private AudioSource _audioSource;
+        private void Awake()
         {
-            instance = this;
+            if (_instance == null)
+            {
+                _instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
-        else
+        private void Start()
         {
-            Destroy(gameObject);
+            _audioSource = GetComponent<AudioSource>();
+            timeManagerSo.EEnterBulletTime.AddListener(ChangePitch);
+            timeManagerSo.EExitBulletTime.AddListener(ChangePitch);
+
+
+            _audioSource.clip = backgroundMusics[0]; // change to the first clip
+            _audioSource.Play();
         }
-    }
-
-    void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-        timeManagerSO.e_EnterBulletTime.AddListener(ChangePitch);
-        timeManagerSO.e_ExitBulletTime.AddListener(ChangePitch);
-
-
-        audioSource.clip = backgroundMusics[0]; // change to the first clip
-        audioSource.Play();
-    }
-    private void ChangePitch()
-    {
-        audioSource.pitch = (timeManagerSO.isbulletTimeOn) ? timeManagerSO.bulletTimePitch : 1f;
+        private void ChangePitch()
+        {
+            _audioSource.pitch = (timeManagerSo.isBulletTimeOn) ? timeManagerSo.bulletTimePitch : 1f;
+        }
     }
 }

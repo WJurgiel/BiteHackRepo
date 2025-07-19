@@ -28,6 +28,9 @@ jobs:
         with:
           unityVersion: 6000.1.12f1
           testMode: EditMode
+        env:
+          UNITY_EMAIL: ${{secrets.UNITY_EMAIL}}
+          UNITY_PASSWORD: ${{secrets.UNITY_PASSWORD}}
 
       - name: Upload Edit Mode Test Results
         uses: actions/upload-artifact@v4
@@ -40,6 +43,9 @@ jobs:
         with:
           unityVersion: 6000.1.12f1
           testMode: PlayMode
+        env:
+          UNITY_EMAIL: ${{secrets.UNITY_EMAIL}}
+          UNITY_PASSWORD: ${{secrets.UNITY_PASSWORD}}
 
       - name: Upload Play Mode Test Results
         uses: actions/upload-artifact@v4

@@ -112,13 +112,15 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Install dotnet format
-        run: 
+        run:
           dotnet tool install -g dotnet-format
+
+      - name: List all files for debug
+        run:
+          ls -R
 
       - name: Run dotnet format on solution
         run:
           dotnet format BiteHackRepo.sln --verify-no-changes --severity error
-      
-      - name: List all files for debug
-        run: 
-          ls -R
+
+

@@ -98,3 +98,20 @@ jobs:
         with:
           name: PlayMode-test-results
           path: artifacts
+
+  linter-checks:
+    name: Run Linter Checks
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Lint C# Code Style
+        uses: actions/setup-dotnet@v4
+        with:
+        dotnet-version: 8.0.x
+        
+      - name: Run dotnet format
+        run: |
+          dotnet tool install -g dotnet-format
+          dotnet format --verify-no-changes --severity error
+

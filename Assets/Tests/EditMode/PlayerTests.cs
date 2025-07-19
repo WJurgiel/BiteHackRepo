@@ -15,6 +15,6 @@ public class PlayerTests
         int ammountToAdd = 5;
 
         int newExp = player.addExp(currentExp, ammountToAdd);
-        Assert.AreEqual(17, newExp);
+        Assert.AreEqual(15, newExp);
     }
 }

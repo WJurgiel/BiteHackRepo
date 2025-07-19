@@ -7,8 +7,8 @@ on:
   pull_request:
 
 jobs:
-  test:
-    name: Run Unity Tests
+  edit-mode:
+    name: Run EditMode Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -35,9 +35,26 @@ jobs:
 
       - name: Upload Edit Mode Test Results
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: EditMode-test-results
-          path: artifacts
+          path: ${{steps.RunUnityEditModeTests.outputs.coveragePath}}
+
+  play-mode:
+    name: Run PlayMode Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Cache Unity Packages
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-${{ hashFiles('**/Packages/packages-lock.json') }}
+          restore-keys: |
+            Library-
 
       - name: Run Unity Play Mode Tests
         uses: game-ci/unity-test-runner@v4

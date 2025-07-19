@@ -22,7 +22,15 @@ jobs:
           key: Library-${{ hashFiles('**/Packages/packages-lock.json') }}
           restore-keys: |
             Library-
-      
+
+      - name: Activate Unity License
+        uses: game-ci/unity-activate@v2
+        with:
+          unityVersion: 6000.1.12f1
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+
       - name: Run Unity Edit Mode Tests
         uses: game-ci/unity-test-runner@v4
         with:

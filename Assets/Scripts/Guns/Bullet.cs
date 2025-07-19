@@ -1,21 +1,23 @@
+using ScriptableObjects;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Bullet : MonoBehaviour
+namespace Guns
 {
-    [SerializeField] private BulletSO bulletSO;
-
-    private Vector3 startPoint;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class Bullet : MonoBehaviour
     {
-        startPoint = transform.position;   
-    }
+        [FormerlySerializedAs("bulletSO")][SerializeField] private BulletSo bulletSo;
 
-    // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.right * (bulletSO.speed * Time.deltaTime));
+        private Vector3 _startPoint;
+        void Start()
+        {
+            _startPoint = transform.position;
+        }
 
-        Destroy(gameObject, 2f);
+        private void Update()
+        {
+            transform.Translate(Vector3.right * (bulletSo.speed * Time.deltaTime));
+            Destroy(gameObject, 2f);
+        }
     }
 }

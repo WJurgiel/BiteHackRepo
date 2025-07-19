@@ -1,29 +1,30 @@
-using System;
+using ScriptableObjects;
 using UnityEngine;
 
-public class PlayerBulletTime : MonoBehaviour
+namespace Player
 {
-    [SerializeField] TimeManagerSO timeManager;
+    public class PlayerBulletTime : MonoBehaviour
+    {
+        [SerializeField] private TimeManagerSo timeManager;
 
-    private void Awake()
-    {
-        timeManager.Initialize(this);
-    }
-    
-
-    void Update()
-    {
-        SwitchBulletTime();
-    }
-    void SwitchBulletTime()
-    {
-        if (Input.GetMouseButtonDown(1) && !timeManager.isbulletTimeOn)
+        private void Awake()
         {
-            timeManager.EnterBulletTime();
+            timeManager.Initialize(this);
         }
-        else if (Input.GetMouseButtonDown(1) && timeManager.isbulletTimeOn)
+        void Update()
         {
-            timeManager.ExitBulletTime();
+            SwitchBulletTime();
+        }
+        void SwitchBulletTime()
+        {
+            if (Input.GetMouseButtonDown(1) && !timeManager.isBulletTimeOn)
+            {
+                timeManager.EnterBulletTime();
+            }
+            else if (Input.GetMouseButtonDown(1) && timeManager.isBulletTimeOn)
+            {
+                timeManager.ExitBulletTime();
+            }
         }
     }
 }

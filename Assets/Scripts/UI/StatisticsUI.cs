@@ -1,85 +1,82 @@
+using ScriptableObjects;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class StatisticsUI : MonoBehaviour
+namespace UI
 {
-    [SerializeField] private StatsSO playerGeneralStats;
-    [SerializeField] private PlayerStatsSO playerStatsSO;
-    [SerializeField] private TimeManagerSO timeManager;
-    [SerializeField] private GunSO gun;
-    [SerializeField] private BoneSO bones;
-    [SerializeField] private Image HealthImg;
+    public class StatisticsUI : MonoBehaviour
+    {
+        [SerializeField] private StatsSo playerGeneralStats;
+        [FormerlySerializedAs("playerStatsSO")][SerializeField] private PlayerStatsSo playerStatsSo;
+        [SerializeField] private TimeManagerSo timeManager;
+        [SerializeField] private GunSo gun;
+        [SerializeField] private BoneSo bones;
+        [FormerlySerializedAs("HealthImg")][SerializeField] private Image healthImg;
 
-    [SerializeField] private Image BulletTimeImg;
-    // private Image
-    [SerializeField] private TMP_Text CurrentAmmoTMP;
-    [SerializeField] private TMP_Text BonesPickedTMP;
-    void Awake()
-    {
-        
-    }
-    void Start()
-    {
-        bones.boneCurrent = 0;
-        playerGeneralStats.health = playerGeneralStats.maxHealth;
-        timeManager.bulletTimeAmount = timeManager.maxBulletTimeAmount;
-        gun.ammoCurrent = gun.maxAmmo;
-        HealthUpdate();
-        BulletTimeUpdate();
-        AmmoTMPUpdate();
-        BonesPickedTMPUpdate();
-        
-        playerGeneralStats.e_healhYourselfEvent.AddListener(HealthUpdate);
-        playerGeneralStats.e_getDamageEvent.AddListener(HealthUpdate);
-        
-        playerGeneralStats.e_increaseDamageEvent.AddListener(DamageTMPUpdate);
-        playerGeneralStats.e_increaseSpeedEvent.AddListener(SpeedTMPUpdate);
-        playerGeneralStats.e_increaseDefenseEvent.AddListener(DefenseTMPUpdate);
-        
-        timeManager.e_UpdateBulletTime.AddListener(BulletTimeUpdate);
-        gun.e_Shoot.AddListener(AmmoTMPUpdate);
-        gun.e_Reload.AddListener(AmmoTMPUpdate);
-        
-        bones.e_Pickup.AddListener(BonesPickedTMPUpdate);
-        bones.e_Reset.AddListener((BonesPickedTMPUpdate));
-        
-        // Debug.Log(healthTMP.text);
-    }
+        [FormerlySerializedAs("BulletTimeImg")][SerializeField] private Image bulletTimeImg;
+        // private Image
+        [FormerlySerializedAs("CurrentAmmoTMP")][SerializeField] private TMP_Text currentAmmoTMP;
+        [FormerlySerializedAs("BonesPickedTMP")][SerializeField] private TMP_Text bonesPickedTMP;
+        void Start()
+        {
+            bones.boneCurrent = 0;
+            playerGeneralStats.health = playerGeneralStats.maxHealth;
+            timeManager.bulletTimeAmount = timeManager.maxBulletTimeAmount;
+            gun.ammoCurrent = gun.maxAmmo;
+            HealthUpdate();
+            BulletTimeUpdate();
+            AmmoTMPUpdate();
+            BonesPickedTMPUpdate();
+
+            playerGeneralStats.EHealthYourselfEvent.AddListener(HealthUpdate);
+            playerGeneralStats.EGetDamageEvent.AddListener(HealthUpdate);
+
+            playerGeneralStats.EIncreaseDamageEvent.AddListener(DamageTMPUpdate);
+            playerGeneralStats.EIncreaseSpeedEvent.AddListener(SpeedTMPUpdate);
+            playerGeneralStats.EIncreaseDefenseEvent.AddListener(DefenseTMPUpdate);
+
+            timeManager.EUpdateBulletTime.AddListener(BulletTimeUpdate);
+            gun.EShoot.AddListener(AmmoTMPUpdate);
+            gun.EReload.AddListener(AmmoTMPUpdate);
+
+            bones.EPickup.AddListener(BonesPickedTMPUpdate);
+            bones.EReset.AddListener((BonesPickedTMPUpdate));
+        }
 
 
-    private void HealthUpdate(int health=-1)
-    {
-        HealthImg.fillAmount = (float)(playerGeneralStats.health) / playerGeneralStats.maxHealth;
-    }
+        private void HealthUpdate(int health = -1)
+        {
+            healthImg.fillAmount = (float)(playerGeneralStats.health) / playerGeneralStats.maxHealth;
+        }
 
-    private void DamageTMPUpdate(int amount=-1)
-    {
-    }
+        private void DamageTMPUpdate(int amount = -1)
+        {
+        }
 
-    private void SpeedTMPUpdate(int amount=-1)
-    {
-    }
+        private void SpeedTMPUpdate(int amount = -1)
+        {
+        }
 
-    private void DefenseTMPUpdate(int amount=-1)
-    {
-    }
+        private void DefenseTMPUpdate(int amount = -1)
+        {
+        }
 
-    private void BulletTimeUpdate()
-    {
-        BulletTimeImg.fillAmount = timeManager.bulletTimeAmount / timeManager.maxBulletTimeAmount;
-    }
+        private void BulletTimeUpdate()
+        {
+            bulletTimeImg.fillAmount = timeManager.bulletTimeAmount / timeManager.maxBulletTimeAmount;
+        }
 
-    private void AmmoTMPUpdate()
-    {
-        if (gun.ammoCurrent < 5) CurrentAmmoTMP.color = Color.red;
-        else CurrentAmmoTMP.color = Color.white;
-        CurrentAmmoTMP.text = $"{gun.ammoCurrent}";
-    }
+        private void AmmoTMPUpdate()
+        {
+            currentAmmoTMP.color = gun.ammoCurrent < 5 ? Color.red : Color.white;
+            currentAmmoTMP.text = $"{gun.ammoCurrent}";
+        }
 
-    private void BonesPickedTMPUpdate()
-    {
-        BonesPickedTMP.text = $"{bones.boneCurrent}/{bones.boneMax}";
+        private void BonesPickedTMPUpdate()
+        {
+            bonesPickedTMP.text = $"{bones.boneCurrent}/{bones.boneMax}";
+        }
     }
 }

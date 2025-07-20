@@ -1,19 +1,21 @@
 using System.Collections;
 using UnityEngine;
 
-public class AudioDestroyer : MonoBehaviour
+namespace Audio
 {
-    private AudioSource audioSource;
-    private float clipLength;
-    private void Awake()
+    public class AudioDestroyer : MonoBehaviour
     {
-        audioSource = GetComponent<AudioSource>();
-    }
-
-    private IEnumerator Start()
-    {
-        clipLength = audioSource.clip.length;
-        yield return new WaitForSeconds(clipLength);
-        Destroy(gameObject);
+        private AudioSource _audioSource;
+        private float _clipLength;
+        private void Awake()
+        {
+            _audioSource = GetComponent<AudioSource>();
+        }
+        private IEnumerator Start()
+        {
+            _clipLength = _audioSource.clip.length;
+            yield return new WaitForSeconds(_clipLength);
+            Destroy(gameObject);
+        }
     }
 }

@@ -1,34 +1,35 @@
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class MagicStone : MonoBehaviour
 {
-    private SpriteRenderer sr;
-    private Light2D light;
+    private SpriteRenderer _sr;
+    private Light2D _light;
     [SerializeField] private Sprite[] stoneSprites;
-    [SerializeField] private BoneSO bone;
+    [SerializeField] private BoneSo bone;
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-        bone.e_Pickup.AddListener(CheckBonesCount);
-        light = GetComponentInChildren<Light2D>();
+        _sr = GetComponent<SpriteRenderer>();
+        bone.EPickup.AddListener(CheckBonesCount);
+        _light = GetComponentInChildren<Light2D>();
     }
     void CheckBonesCount()
     {
-        if (bone.boneCurrent < 10 && sr.sprite != stoneSprites[0])
+        switch (bone.boneCurrent)
         {
-            sr.sprite = stoneSprites[0];
-            light.intensity = 0.0f;
-        }
-        else if (bone.boneCurrent >= 10 && sr.sprite != stoneSprites[1])
-        {
-            sr.sprite = stoneSprites[1];
-            light.intensity = 5f;
-        }
-        else if (bone.boneCurrent >= 20 && sr.sprite != stoneSprites[2])
-        {
-            sr.sprite = stoneSprites[2];
-            light.intensity = 10f;
+            case < 10 when _sr.sprite != stoneSprites[0]:
+                _sr.sprite = stoneSprites[0];
+                _light.intensity = 0.0f;
+                break;
+            case >= 10 when _sr.sprite != stoneSprites[1]:
+                _sr.sprite = stoneSprites[1];
+                _light.intensity = 5f;
+                break;
+            case >= 20 when _sr.sprite != stoneSprites[2]:
+                _sr.sprite = stoneSprites[2];
+                _light.intensity = 10f;
+                break;
         }
     }
 }

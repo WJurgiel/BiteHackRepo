@@ -2,28 +2,25 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "BoneSO", menuName = "ScriptableObjects/BoneSO", order = 1)]
-public class BoneSO : ScriptableObject
+namespace ScriptableObjects
 {
-    public int boneCurrent;
-    public int boneMax;
-    
-    public void OnEnable()
+    [CreateAssetMenu(fileName = "BoneSO", menuName = "ScriptableObjects/BoneSO", order = 1)]
+    public class BoneSo : ScriptableObject
     {
-        boneCurrent = 0; 
-    }
-    [NonSerialized] public UnityEvent e_Pickup = new UnityEvent();
-    [NonSerialized] public UnityEvent e_Reset = new UnityEvent();
+        public int boneCurrent;
+        public int boneMax;
 
-    public void AddBone()
-    {
-        boneCurrent += 1;
-        e_Pickup.Invoke();
-    }
+        public void OnEnable()
+        {
+            boneCurrent = 0;
+        }
+        [NonSerialized] public readonly UnityEvent EPickup = new UnityEvent();
+        [NonSerialized] public readonly UnityEvent EReset = new UnityEvent();
 
-    public void ResetBones()
-    {
-        boneCurrent = 0;
-        e_Reset.Invoke();
+        public void AddBone()
+        {
+            boneCurrent += 1;
+            EPickup.Invoke();
+        }
     }
 }

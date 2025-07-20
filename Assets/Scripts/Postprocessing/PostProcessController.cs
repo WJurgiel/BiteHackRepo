@@ -1,48 +1,54 @@
-using System;
 using System.Collections;
+using ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Serialization;
 
-public class PostProcessController : MonoBehaviour
+namespace Postprocessing
 {
-    [SerializeField] TimeManagerSO timeManagerSO;
-    private Vignette vignette;
-    private Volume volume;
-    [SerializeField] private float targetVignette = 0.25f;
-    [SerializeField] private float duration = 0.3f;
-    private void Awake()
+    public class PostProcessController : MonoBehaviour
     {
-        volume = GetComponent<Volume>();
-    }
-
-    private void Start()
-    {
-        vignette = volume.profile.TryGet<Vignette>(out var vignetteProfile) ? vignetteProfile : null;
-        Debug.Log(vignette);
-        timeManagerSO.e_EnterBulletTime.AddListener(ChangeVignette);
-        timeManagerSO.e_ExitBulletTime.AddListener(ChangeVignette);
-    }
-
-    private IEnumerator ChangeVignetteIntensity(float target, float duration)
-    {
-        float startValue = vignette.intensity.value;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
+        [FormerlySerializedAs("timeManagerSO")]
+        [SerializeField]
+        private TimeManagerSo timeManagerSo;
+        private Vignette _vignette;
+        private Volume _volume;
+        [SerializeField] private float targetVignette = 0.25f;
+        [SerializeField] private float duration = 0.3f;
+        private void Awake()
         {
-            elapsedTime += Time.unscaledDeltaTime;
-            float t = elapsedTime / duration;
-            
-            vignette.intensity.value = Mathf.Lerp(startValue, target, t);
-            yield return null;
+            _volume = GetComponent<Volume>();
         }
-        vignette.intensity.value = target;
-    }
 
-    private void ChangeVignette()
-    {
-        float target = timeManagerSO.isbulletTimeOn ? targetVignette : 0.0f;
-        StartCoroutine(ChangeVignetteIntensity(target, duration));
+        private void Start()
+        {
+            _vignette = _volume.profile.TryGet<Vignette>(out var vignetteProfile) ? vignetteProfile : null;
+            Debug.Log(_vignette);
+            timeManagerSo.EEnterBulletTime.AddListener(ChangeVignette);
+            timeManagerSo.EExitBulletTime.AddListener(ChangeVignette);
+        }
+
+        private IEnumerator ChangeVignetteIntensity(float target, float durationTime)
+        {
+            var startValue = _vignette.intensity.value;
+            var elapsedTime = 0f;
+
+            while (elapsedTime < durationTime)
+            {
+                elapsedTime += Time.unscaledDeltaTime;
+                var t = elapsedTime / durationTime;
+
+                _vignette.intensity.value = Mathf.Lerp(startValue, target, t);
+                yield return null;
+            }
+            _vignette.intensity.value = target;
+        }
+
+        private void ChangeVignette()
+        {
+            var target = timeManagerSo.isBulletTimeOn ? targetVignette : 0.0f;
+            StartCoroutine(ChangeVignetteIntensity(target, duration));
+        }
     }
 }

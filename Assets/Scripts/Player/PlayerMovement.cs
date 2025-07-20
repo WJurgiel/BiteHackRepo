@@ -131,12 +131,12 @@ namespace Player
 
         void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.tag == "Bone")
+            if (other.gameObject.CompareTag("Bone"))
             {
                 bones.AddBone();
                 Destroy(other.gameObject);
             }
-            else if (other.gameObject.tag == "GuardTrigger")
+            else if (other.gameObject.CompareTag("GuardTrigger"))
             {
                 CanvasGroup guardCanvas = other.gameObject.GetComponentInChildren<CanvasGroup>();
 
@@ -149,7 +149,8 @@ namespace Player
                 StartCoroutine(FadeCanvasOpacity(1f, 0.6f, guardCanvas));
             }
         }
-        public IEnumerator FadeCanvasOpacity(float targetOpacity, float duration, CanvasGroup canvasGroup)
+
+        private IEnumerator FadeCanvasOpacity(float targetOpacity, float duration, CanvasGroup canvasGroup)
         {
             float startOpacity = canvasGroup.alpha;
             float timeElapsed = 0f;
@@ -163,7 +164,7 @@ namespace Player
 
             // Ensure final opacity is set to target
             canvasGroup.alpha = targetOpacity;
-            if (targetOpacity == 1.0f)
+            if (Mathf.Approximately(targetOpacity, 1.0f))
             {
                 yield return new WaitForSeconds(4f);
                 StartCoroutine(FadeCanvasOpacity(0f, 1.0f, canvasGroup));

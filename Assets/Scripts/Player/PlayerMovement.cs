@@ -179,13 +179,12 @@ namespace Player
             Vector2 dashDirection = new Vector2(_horizontal, _vertical).normalized;
 
             // Perform dash movement by overriding Rigidbody velocity
-            _rb.linearVelocity = dashDirection * dashSpeed;
-
+            _rb.velocity = dashDirection * dashSpeed;
             // Wait for the dash duration
             yield return new WaitForSeconds(dashDuration);
 
             // Stop dash movement and reset velocity
-            _rb.linearVelocity = Vector2.zero;
+            _rb.velocity = Vector2.zero;
             _isDashing = false;
         }
 

@@ -22,7 +22,7 @@ namespace UI
         private void Start()
         {
             volumeSlider.value = 1;
-            volumeSlider.onValueChanged.AddListener(delegate {SetVolume ();});
+            volumeSlider.onValueChanged.AddListener(delegate { SetVolume(); });
         }
         public void GoToMainMenu()
         {

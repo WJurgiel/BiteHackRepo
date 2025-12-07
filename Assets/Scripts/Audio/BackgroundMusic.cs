@@ -30,6 +30,11 @@ namespace Audio
 
             _audioSource.clip = backgroundMusics[0]; // change to the first clip
             _audioSource.Play();
+
+            if (PlayerPrefs.HasKey("volume"))
+            {
+                AudioListener.volume = PlayerPrefs.GetFloat("volume");
+            }
         }
         private void ChangePitch()
         {
